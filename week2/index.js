@@ -1,6 +1,7 @@
 const Phone = require('./phone')
 const SocialPlatform = require('./socialplatform')
 const Person = require('./person')
+const chalk = require('chalk');
 
 twitter = new SocialPlatform("twitter")
 instagram = new SocialPlatform("instagram")
@@ -23,3 +24,5 @@ instagram.register(mimi)
 
 twitter.showUsers()
 instagram.showUsers()
+
+console.log(chalk.blue('Chalk was here'));
