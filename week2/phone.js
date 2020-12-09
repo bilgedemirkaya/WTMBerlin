@@ -1,4 +1,4 @@
-Phone = class {
+module.exports = class Phone {
     constructor(user) {
         this.user = user
         this.apps = []

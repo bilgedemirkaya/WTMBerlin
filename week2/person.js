@@ -1,4 +1,4 @@
-Person = class {
+module.exports = class Person {
     constructor(name) {
       this.posts = []
       this.name = name

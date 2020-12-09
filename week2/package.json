@@ -1,0 +1,11 @@
+{
+  "name": "week2",
+  "version": "1.0.0",
+  "description": "Node JS is an open source, cross platform JS runtime environment that executes JS code outside of a browser.\r - Cross platform means that it can run on different architectures. In this case windows, linux, mac and even lightbox \r - Runtime environment means you dont have to do anything beforehand to be able to run the code. It means there is another software that takes your  plain text JS code as an input, interpretes it and outputs it. So **no need to compile**.\r - to create a node.js project ''",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

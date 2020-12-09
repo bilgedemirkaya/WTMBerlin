@@ -1,3 +1,6 @@
+const Phone = require('./phone')
+const SocialPlatform = require('./socialplatform')
+const Person = require('./person')
 
 twitter = new SocialPlatform("twitter")
 instagram = new SocialPlatform("instagram")
