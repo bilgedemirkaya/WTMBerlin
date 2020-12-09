@@ -1,7 +1,8 @@
 const Phone = require('./phone')
 const SocialPlatform = require('./socialplatform')
 const Person = require('./person')
-const chalk = require('chalk');
+const chalk = require('chalk')
+const Database = require('./database')
 
 twitter = new SocialPlatform("twitter")
 instagram = new SocialPlatform("instagram")
@@ -22,7 +23,13 @@ mimisPhone.downloadApp("instagram")
 twitter.register(mimi)
 instagram.register(mimi)
 
-twitter.showUsers()
+tUsers = twitter.showUsers()
 instagram.showUsers()
 
-console.log(chalk.blue('Chalk was here'));
+const phoneData = [myphone, mimisPhone]
+
+console.log(chalk.blue('Chalk was here'))
+Database.save('phone.json', phoneData)
+
+console.log(Database.load('phone.json'))  
+
