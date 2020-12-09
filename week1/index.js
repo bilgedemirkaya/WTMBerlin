@@ -10,7 +10,6 @@ Phone = class {
     }
 }
 
-
 SocialPlatform = class {
     constructor(name) {
         this.name = name
