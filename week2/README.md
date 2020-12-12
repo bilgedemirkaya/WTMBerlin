@@ -5,7 +5,6 @@ Node JS is an open source, cross platform JS runtime environment that executes J
 - Runtime environment means you dont have to do anything beforehand to be able to run the code. It means there is another software that takes your  plain text JS code as an input, interpretes it and outputs it. So **no need to compile**.
 - to create a node.js project ``npm init``
 
-
 #### How to write to a file and how to read from a file
 - There is a speacial module ``fs`` which is short for file system module. It's included in all node.js versions so no need to install it additionally. We just need to require it. ``const fs = require('fs')``
 
@@ -18,4 +17,4 @@ Node JS is an open source, cross platform JS runtime environment that executes J
 
 - Now when we add the third parameter, it will give the output as string so we cannot reach the properties of it. ``JSON.parse`` will convert it into JSON format again. 
 
-**NOTE** If you want to write two different data in the file, you can just make them array and JSON.stringify will be able to stingify the array as well. It doesn't have to be an object.
+**NOTE** If you want to write two different data in the file, you can just make them array and JSON.stringify will  be able to stingify the array as well. It doesn't have to be an object.
