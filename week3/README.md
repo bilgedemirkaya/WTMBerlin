@@ -126,8 +126,7 @@ async function main() {
 
     meetup.report()
 }
-maind() 
+main() 
 ```
-
 
 *Notes are taken from the WTMBerlin classes*
