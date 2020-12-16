@@ -43,14 +43,14 @@ in order to reach that request that we made on browser we use ``req.body`` and p
 ## Homework 
 Example of a complex function 
 
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin\week4\ppl.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week4/ppl.JPG)
 
 these are the people I fetch from the database.
 
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin\week4\Capture.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week4/Capture.JPG)
 
 posted a tweet through this url '/person/:id/post'.
 ``axios.post('/person/2/post', {post:'last one'}).then(console.log)``
 
 Save it to database so we can display the updated version
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin\week4\pp.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week4/pp.JPG)
