@@ -1,6 +1,3 @@
-const Phone = require('./models/phone')
-const SocialPlatform = require('./models/socialplatform')
-const Person = require('./models/person')
 
 const PersonService = require('./services/person-service')
 const PhoneService = require('./services/phone-service')

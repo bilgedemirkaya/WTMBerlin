@@ -8,7 +8,7 @@ There is no synchronous in programming. Everything is asynchronous, but we neede
 
 with sync functions, until it loads, program will block user to access functionality which is not useful.
 
-Javascript especially node js is non-blocking.So when you make a readFile function asynchronous for example, you are telling, just read the file and let us know when it is done. Therefor as a third parameter, we need to pass a callback function. It is 'calling us back' when it is done. In node.js there is a standard way of parsing errors, to be able to catch the error, you need to pass it as a first parameter in the callback function. 
+Javascript especially node js is non-blocking.So when you make a readFile function asynchronous for example, you are telling, just read the file and let us know when it is done. *Node.js doesnt have the necessary rights to readh the file, it just tells OS to read the file.* Therefor as a third parameter, we need to pass a callback function. It is 'calling us back' when it is done. In node.js there is a standard way of parsing errors, to be able to catch the error, you need to pass it as a first parameter in the callback function. 
 **Every callback function in node.js by definition, requires error as a first parameter which has a default value of NULL.**
 
 ## readFile function asynchronously

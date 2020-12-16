@@ -29,9 +29,13 @@ Then the code do some processing, and it needs to return some response to the br
 **Note** : To install a package globally (so you can use in any projects) -g.
 **Note** : you dont need to shut down the server if u use nodemon package.
 
-## Another way of generating html; pug file
+**Another way of generating html; pug file;**
 - pug files doesnt have any closing tags
 - you can put variables in it
 
+## Axios
+An external library we used for our project to post data to the dtabase. we usually post data through forms but for this project we use axios bcs we dont have a front end yet.
+Syntax is like; 
+``axios.post('/person', {name: 'pupu'}).then(console.log)``
 
-**Rendering means,
+in order to reach that request that we made on browser we use ``req.body`` and parse it by using aother library called ``body-parser``
