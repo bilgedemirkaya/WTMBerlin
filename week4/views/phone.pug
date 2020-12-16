@@ -3,7 +3,8 @@ extends layout
 block content
     h1 the number of phones is #{phones.length}
     each phone in phones
-        h4 phone id: #{phone.id} 
-        h3 users: 
-        each user in phone.user
-            h4 #{user}
+        <hr>
+        h4 Id: #{phone.id}
+        h4 Phone Name : #{phone.name}
+        h4 Apps: #{phone.apps}
+        <hr>

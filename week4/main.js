@@ -17,16 +17,19 @@ async function main() {
 
     myphone = new Phone(bilge)
     mimisPhone = new Phone(mimi)
- 
+    myphone.downloadApp(instagram)
+
+    console.log(myphone)
 
     // save it to database
-    await PersonService.add(bilge)
+   /*  await PersonService.add(bilge)
     await PersonService.add(mimi)
     await PhoneService.add(myphone)
+    await PhoneService.add(mimisPhone)
     await PlatformService.add(twitter)   
-    await PlatformService.add(instagram)   
+    await PlatformService.add(instagram)    */
     //console.log(chalk.blue('Chalk was here'))
-    
+     
 
 /*    const phone = await PhoneService.findAll()
    console.log(phone)

@@ -3,4 +3,8 @@ extends layout
 block content
     h1 the number of people is #{people.length}
     each person in people
-        h4 #{person.name}
+        <hr>
+        h4 Id: #{person.id}
+        h4 Name : #{person.name}
+        h4 Posts: #{person.posts}
+        <hr>
