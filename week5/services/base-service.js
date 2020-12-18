@@ -1,5 +1,6 @@
 const fs = require('fs')
 const Flatted = require('flatted/cjs');
+const { findById } = require('../models/person');
 
 module.exports = class Service {
   constructor(model, dbPath) {
@@ -20,31 +21,11 @@ module.exports = class Service {
     return this.model.deleteOne({_id: itemId})
   }
 
-  async find(itemId = 1) {
-    const allItems = await this.findAll()
-
-    return allItems.find(p => p.id == itemId)
-  }
-
-  async saveAll(items) {
-    return new Promise((resolve, reject) => {
-      fs.writeFile(this.dbPath, Flatted.stringify(items), (err, file) => {
-        if (err) return reject(err)
-
-        resolve()
-      })
-    })
+  async find(itemId) {
+    return this.model.findById(itemId)
   }
 
   async update(updatedItem) {
-    const allItems = await this.findAll();
-    const itemIndex = allItems.findIndex(item => item.id === updatedItem.id);
-
-    if (itemIndex < 0) {
-      await this.add(updatedItem);
-    } else {
-      allItems.splice(itemIndex, 1, updatedItem);
-      await this.saveAll(allItems);
-    }
+    return this.model.findOneAndUpdate(updatedItem)
   }
 }
