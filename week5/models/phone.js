@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const phoneService = require('../services/phone-service')
+const platformService = require('../services/platform-service')
 
 const PhoneSchema = new mongoose.Schema({
     name: {
@@ -12,9 +12,17 @@ const PhoneSchema = new mongoose.Schema({
     },
     apps: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref:'Platform'
+        ref:'Platform',
+        autopopulate:true
     }]
 })
+
+PhoneSchema.methods.downloadApp = async function (app) {
+this.apps.push(app)
+// console.log(app)
+await this.save()
+}
+PhoneSchema.plugin(require('mongoose-autopopulate'))
 
 const PhoneModel = mongoose.model('Phone',PhoneSchema)
 
