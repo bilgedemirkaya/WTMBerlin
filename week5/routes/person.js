@@ -34,7 +34,7 @@ router.post('/:id/post', async (req, res) => {
   const { post } = req.body;
   person.post(post)
   console.log(post)
-  await PersonService.update(person)
+  await PersonService.update(req.params.id)
   res.redirect(`/${req.params.id}`)
 })
 

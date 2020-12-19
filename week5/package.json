@@ -5,6 +5,7 @@
     "flatted": "^2.0.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8",
+    "mongoose-autopopulate": "^0.12.3",
     "pug": "^3.0.0"
   }
 }

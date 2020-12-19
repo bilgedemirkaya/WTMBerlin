@@ -7,6 +7,7 @@ router.get('/all', async (req,res) => {
     const phones = await PhoneService.findAll()
     res.render('phone', {phones})
   })
+  
 router.get('/:id', async (req, res) => {
     const phone = await PhoneService.find(req.params.id)
     if (!phone) {

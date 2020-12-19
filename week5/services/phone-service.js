@@ -2,9 +2,10 @@ const BaseService = require('./base-service')
 const PhoneModel = require('../models/phone')
 
 class PhoneService extends BaseService {
-    constructor() {
-        super(PhoneModel, `${__dirname}/../phone-database.json`)
-    }
+    model = PhoneModel
+/*     constructor() {
+        super(PhoneModel)
+    } */
 }
 
 module.exports = new PhoneService()

@@ -1,17 +1,18 @@
-module.exports = class Phone {
-    constructor(name, user, id, apps=[]) {
-        this.user = user
-        this.apps = apps
-        this.id = id
-        this.name = name
-    }
+const mongoose = require('mongoose')
+const phoneService = require('../services/phone-service')
 
-    downloadApp(app) {
-        this.apps.push(app)
-       // this.user.apps.push(app)
-      console.log(app, "downloaded")
-    }
-    static create({ name, user, id, apps }) { 
-        return new Phone(name,user, id, apps);
-    }
-}
+const PhoneSchema = new mongoose.Schema({
+    name: {
+        type:String,
+        default: "phone",
+    },
+    user: {
+        type:String,
+        minlength: 2,
+    },
+    apps: Array
+})
+
+const PhoneModel = mongoose.model('Phone',PhoneSchema)
+
+module.exports = PhoneModel

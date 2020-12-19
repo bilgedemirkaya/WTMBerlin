@@ -1,13 +1,4 @@
-const fs = require('fs')
-const Flatted = require('flatted/cjs');
-const { findById } = require('../models/person');
-
 module.exports = class Service {
-  constructor(model, dbPath) {
-    this.model = model
-    this.dbPath = dbPath
-  }
-
   async findAll() {
     return this.model.find()
   }
@@ -25,7 +16,7 @@ module.exports = class Service {
     return this.model.findById(itemId)
   }
 
-  async update(updatedItem) {
-    return this.model.findOneAndUpdate(updatedItem)
+  async update(id) {
+    return this.model.findByIdAndUpdate(id)
   }
 }
