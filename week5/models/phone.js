@@ -7,10 +7,13 @@ const PhoneSchema = new mongoose.Schema({
         default: "phone",
     },
     user: {
-        type:String,
+        type:mongoose.SchemaTypes.String,
         minlength: 2,
     },
-    apps: Array
+    apps: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref:'Platform'
+    }]
 })
 
 const PhoneModel = mongoose.model('Phone',PhoneSchema)

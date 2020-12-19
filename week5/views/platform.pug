@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 the number of platforms is #{platforms.length}
+    each platform in platforms
+        <hr>
+        h4 Id: #{platform.id}
+        h4 Name : #{platform.name}
+        h4 Posts: #{platform.posts}
+        <hr>
