@@ -92,7 +92,7 @@ test('Get list of people', async t => {
 
 // share a post from user
 test('share a post from user', async t => {
-  t.plan(1)
+  t.plan(2)
   const newlyCreatedPerson = {
     name: 'postlicak kisi',
     posts: []
@@ -103,10 +103,15 @@ test('share a post from user', async t => {
     .post('/person')
     .send(newlyCreatedPerson)).body
 
-
   const posted = await request(app)
   .post(`/person/${pp._id}/post`)
   .send( {post: "example"} )
 
   t.is(posted.status, 200)
+
+  // fetch the person
+  const fetchRes = await request(app).get(`/person/${pp._id}`)
+
+  t.is(fetchRes.body.posts[0], "example")
+
 })
