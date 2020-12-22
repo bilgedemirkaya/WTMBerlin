@@ -26,4 +26,12 @@ test('return sun when it is 35 degrees'), async t => {
 })
 ```
 
-so you need to wait until the summer to test your code. ``sinon`` is used for stubbing, fakin the the API. 
+so you need to wait until the summer to test your code. ``sinon`` is used for stubbing, faking the API. 
+
+``npm run test``
+
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week6/images/tests.JPG)
+
+``npm run test-coverage``
+
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week6/images/coverage.JPG)
