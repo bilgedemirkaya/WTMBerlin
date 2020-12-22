@@ -8,10 +8,13 @@ const PlatformSchema = new mongoose.Schema({
     },
     users: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Phone'        
+        ref: 'Phone',
+        autopopulate:true      
     }],
     posts: Array
 })
+
+PlatformSchema.plugin(require('mongoose-autopopulate'))
 
 const PlatformModel = mongoose.model('Platform',PlatformSchema)
 

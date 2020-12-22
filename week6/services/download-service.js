@@ -6,7 +6,7 @@ class DownloadService extends BaseService {
         const socialApp = await platformService.find(app)
         phone.apps.push(app)
         socialApp.users.push(phone)
-    
+        
         await phone.save()
         await socialApp.save()
     }
