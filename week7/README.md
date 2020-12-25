@@ -95,4 +95,32 @@ export default createStore({
 
 Now back our real application, to be able to display data fro our database,
 first install ``npm i axios``.
-To fetch data from backend, after importing axios, create a new action.
+To fetch data from backend, after importing axios, create a new action which u are connecting to the database and getting the data in json format.
+ 
+ Once added, most likely we can see this error;
+
+ `` Access to XMLHttpRequest at 'http://localhost:3000/person/all/json' from origin 'http://localhost:8081' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.``
+
+ that means backend is not accepting any request for giving data for security reasons. In the backend we need to allow it first by using ``cors`` package in backend server. And we need to require and use it in app.js
+- Check out for cors configurations [here](https://www.npmjs.com/package/cors)
+
+## Component Decomposition
+
+in template we can show list of names like this 
+``div(v-for="person in people") {{person.name}}``
+
+But if we create a component card, it will happen inside of the component
+
+``people-card(v-for="person in people",:people="people")``
+
+Vue component demonstration I found except from the course.
+
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/component.png)
+
+
+## Some notes
+
+- scoped attribute in css is for only applying the style in that spesific component.
+- prefer semantic element which will clearly describes its meaning to both the browser and the developer. Use article, nav, table,form, main etc instead of div,span. So we can make our application way more accesable.
+- to make the app mobile responsive, we can use toggle device tool
+
