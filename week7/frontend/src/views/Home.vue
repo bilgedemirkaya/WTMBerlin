@@ -1,21 +1,22 @@
 <script>
 import PhoneCard from '@/components/phone-card.vue'
+import newPhone from '@/components/new-phone.vue'
 import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'Home',
   components: {
     PhoneCard,
+    newPhone
   },
   computed: {
     ...mapState({
-     phones: (state) => state.phones
+     phones: (state) => state.phones,
+     isNew: (state) => state.isNew
     }) 
   },
   methods: {
-    ...mapActions({  
-      fetchPhones: 'fetchPhones',
-    })
+    ...mapActions(['fetchPhones','removePhoneComponent'])
   },
   created() {
     this.fetchPhones()
@@ -25,14 +26,20 @@ export default {
 
 <template lang= "pug">
 h1 Welcome to the website where you can download new apps to your phone!
-h3 Please choose your phone or  <button class="button">  <span>Add new phone</span> </button>
-phone-card(v-for="phone in phones",:phone="phone")
+h3 Please choose your phone or  <button class="button" @click="removePhoneComponent">  <span>Add new phone </span> </button>
+section(v-if="!isNew") 
+  phone-card(v-for="phone in phones",:phone="phone")
+section(v-else)
+  new-phone()
+
 </template>
 
 <style lang="sass">
 $color: #111
 $primary: #ffffff 
 
+body 
+  background-color: #fff1cc
 .button
   position: relative
   margin: auto
@@ -40,7 +47,7 @@ $primary: #ffffff
   transition: all .2s ease
   border: none
   outline: none
-  background: linear-gradient(-90deg, #354d2e, #88fcf0)
+  background: linear-gradient(-90deg, #fff1cc, #88fcf0)
   border-radius: 25px
   &:before
     content: ""

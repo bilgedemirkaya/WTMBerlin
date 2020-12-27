@@ -7,7 +7,8 @@ export default createStore({
     phones: [],
     apps: [],
     papps: [],
-    phoneChoice:''
+    phoneChoice:'',
+    isNew:false
   },
 
   mutations: {
@@ -25,6 +26,12 @@ export default createStore({
     },
     SET_PHONE(state,phoneChoice) {
       state.phoneChoice = phoneChoice
+    },
+    SET_ISNEW(state, isNew) {
+      state.isNew = isNew
+    },
+    SET_NEWPHONE(state,data) {
+      state.phones.unshift(data)
     }
   },
   actions: {
@@ -54,7 +61,16 @@ export default createStore({
       const phoneChoice = personApps.data._id
       commit('SET_PHONE',phoneChoice)
       console.log(phoneChoice)
-    }
+    },
+    removePhoneComponent({commit}) {
+      const isNew = true
+      commit('SET_ISNEW',isNew)
+    },
+    async addPhone({ commit }, phone) {
+      const response = await axios.post('http://localhost:3000/phone',phone)
+      commit('SET_NEWPHONE', response.data)
+      console.log(response.data)
+    },
   },
   modules: {
   }
