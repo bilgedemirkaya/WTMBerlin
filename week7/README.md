@@ -123,4 +123,3 @@ Vue component demonstration I found except from the course.
 - scoped attribute in css is for only applying the style in that spesific component.
 - prefer semantic element which will clearly describes its meaning to both the browser and the developer. Use article, nav, table,form, main etc instead of div,span. So we can make our application way more accesable.
 - to make the app mobile responsive, we can use toggle device tool
-
