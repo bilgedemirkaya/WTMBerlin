@@ -46,7 +46,7 @@ we can also simplify the syntax above by ``...mapActions(['incrementCounter'])``
 
 our counter state would look like this at the end in the views;
 
-``
+```
 import {mapState, mapActions} from 'vuex'
 
 export default {
@@ -68,10 +68,10 @@ export default {
     this.incrementCounter()
   }
 }
-``
+```
 in our store index file is;
 
-``
+```
 import { createStore } from 'vuex'
 
 export default createStore({
@@ -91,7 +91,8 @@ export default createStore({
   },
   modules: {
   }
-})``
+})
+```
 
 Now back our real application, to be able to display data fro our database,
 first install ``npm i axios``.
