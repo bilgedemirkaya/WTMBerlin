@@ -1,19 +1,21 @@
 <template lang='pug'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 article.card
-  h2.card-title 
+  h2.card-title
+  router-link.name(:to="phoneUrl" class="name") {{ phone.name }}  
   button(class="rm-btn" @click="rmvPhone(`${phone._id}`)")
       i(class="fa fa-remove")
-  h2.name {{phone.name}}
   input(
     type='checkbox'
     name='phone'
     v-model="checked"
     @change='choosePhone(`${phone._id}`)'
   )
-  img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone")
-  h3(v-if="checked" v-for="apps in currentapps") Current Apps: {{ apps.name }}
-  h6(v-if="checked") To download an app into {{ phone.name }} please go to app section above
+  img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone" class="img")
+  h3(v-if="checked") Current Apps: 
+    h6(v-for="apps in currentapps") {{ apps.name }}
+  h4(v-if="checked") To download a new app into {{ phone.name }} please go 
+    router-link.name(:to="appUrl")  here
 
 </template>
 <script>
@@ -34,7 +36,13 @@ export default {
    computed: {
     ...mapState({ 
       currentapps: (state) => state.papps,
-    })
+    }),
+    phoneUrl() {
+      return `/phone/${this.phone._id}`
+    },
+    appUrl() {
+      return `/apps`
+    }
   },
   methods: {
     ...mapActions(['choosePhone','rmvPhone'])
@@ -65,5 +73,14 @@ input[type="checkbox"] {
 .rm-btn:hover {
    background-color: rgb(212, 54, 54);
    color:white;
+}
+.name {
+  margin: 15px;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 </style>

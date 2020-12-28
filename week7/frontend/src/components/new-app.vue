@@ -4,6 +4,7 @@ article.container
     form(@submit.prevent="onSubmit")
         input(type="text" v-model="platform" placeholder="Add platform name...")
         input(type="submit" value="Submit" class="button" @click="() => clicked = true")
+        input(type="submit" style="backgroundColor:red" value="Cancel" class="button" @click="() => {location.reload()}")        
     h3(v-if="clicked")  Thank you for adding a new platform 
       span {{ countdown }}
 

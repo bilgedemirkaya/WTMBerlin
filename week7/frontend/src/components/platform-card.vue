@@ -11,10 +11,9 @@ article.card
     v-model="checked"
     @change='choosePlatform(`${platform._id}`)'
   )
-  img(:src="`https://picsum.photos/300/200?random=${platform._id}`", alt="platform")
-  h4 {{phoneChoice}} {{appChoice}}
+  img(:src="`https://picsum.photos/300/200?random=${platform._id}`", alt="platform") 
 h1(v-if="checked") To download {{platform.name}} into your phone... 
-    button(class="button" @click="downloadApp(`${phoneChoice},${appChoice}`)") Click here
+    button(class="clickme" @click="downloadApp(`${phoneChoice},${appChoice}`)") Click here
 </template>
 <script>
 

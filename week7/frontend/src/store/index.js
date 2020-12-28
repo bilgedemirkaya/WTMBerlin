@@ -110,7 +110,9 @@ export default createStore({
       let appId = this.state.appChoice
       let choisenapp = {app : appId}
       const down = await axios.post(`http://localhost:3000/phone/${phoneId}/download`, choisenapp)
+      alert("App downloaded, you can check if it is there in phones")
       console.log(down)
+      location.assign("http://localhost:8081")
     },
     async choosePlatform({commit},id) {
       const platforms = await axios.get(`http://localhost:3000/platform/${id}`)

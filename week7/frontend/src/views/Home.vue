@@ -87,4 +87,58 @@ body
       transform: translateX(0)
   &:active
     transform: scale(.96)
+
+.clickme
+  font-family: 'Bungee', cursive
+  font-size: 0.7rem
+  position: relative
+  text-transform: uppercase
+  font-weight: bold
+  letter-spacing: 1px
+  cursor: pointer
+  background: $color
+  border: 2px solid darken(white, 15%)
+  padding: 10px 20px
+  border-radius: 45px
+  color: white
+  overflow: hidden
+  box-shadow: 0 2px 4px darkgray
+  transition: all 0.2s ease-in
+  z-index: 1
+  
+  .circle
+    position: absolute
+    border-radius: 50%
+    pointer-events: none
+    background:
+      image: radial-gradient(circle closest-side, white, lighten(palevioletred, 15%))
+
+    width: 1px
+    height: 1px
+    z-index: 3
+    animation:
+      name: ripple
+      duration: 0.5s
+      timing-function: ease-in
+  
+  &:hover
+    transform: scale(1.01)
+    box-shadow: 0 6px 4px darkgray
+
+@keyframes ripple
+  0%
+    transform: scale(0, 0)
+    opacity: 0
+  75%
+    transform: scale(450, 450)
+    opacity: 0.75
+  100%
+    transform: scale(700, 700)
+    opacity: 0
+.img 
+
+  border: 2px solid black
+.img:hover
+  opacity: 0.7
+
 </style>
