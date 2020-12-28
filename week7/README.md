@@ -9,12 +9,12 @@ In order to use pug files we created for backend, we need some special packages.
 ``npm install -D pug pug-plain-loader``
 
 
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/state.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/frontend/images/state.JPG)
 
 
 Our view ( component) is able to read data from the state and display it. If we want to change (mutate) the state based on user interactions, we will need to call actions. Actions called with a special word ``dispatch``.So in order to change a state from view component, we will dispatch an action will later change the state. After changing the state, our component will update automatically.
 
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/statemanagement.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/frontend/images/statemanagement.JPG)
 
 In this detailed chart we see that there is one thing btw state and actions which guards unnesessary changes. In our actions we cannot change states directly. So developers need to came up with an entity called ``mutation``. Mutation is just a simple function and this is the only function that have direct access to the state.
 
@@ -115,7 +115,7 @@ But if we create a component card, it will happen inside of the component
 
 Vue component demonstration I found except from the course.
 
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/component.png)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/frontend/images/component.png)
 
 
 ## Some notes
@@ -128,11 +128,11 @@ Vue component demonstration I found except from the course.
 -Users can add, delete, view phones and apps, add apps to phones.apps array.
 <br>
 Home Page 
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/phones.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/frontend/images/phones.JPG)
 
 Add new phone
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/state.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/frontend/images/add-new.JPG)
 
 Download an app to phone
-![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/images/state.JPG)
+![alt text](https://github.com/bilgedemirkaya/WTMBerlin/blob/main/week7/frontend/images/downloadnew.JPG)
 
