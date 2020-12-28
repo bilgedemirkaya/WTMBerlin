@@ -2,19 +2,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 article.card
   h2.card-title 
-  button(class="rm-btn" @click="rmvPhone(`${phone._id}`)")
+  button(class="rm-btn" @click="rmvPlatform(`${platform._id}`)")
       i(class="fa fa-remove")
-  h2.name {{phone.name}}
+  h2.name {{platform.name}}
   input(
     type='checkbox'
-    name='phone'
+    name='platform'
     v-model="checked"
-    @change='choosePhone(`${phone._id}`)'
+    @change='choosePlatform(`${platform._id}`)'
   )
-  img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone")
-  h3(v-if="checked" v-for="apps in currentapps") Current Apps: {{ apps.name }}
-  h6(v-if="checked") To download an app into {{ phone.name }} please go to app section above
-
+  img(:src="`https://picsum.photos/300/200?random=${platform._id}`", alt="platform")
+  h4 {{phoneChoice}} {{appChoice}}
+h1(v-if="checked") To download {{platform.name}} into your phone... 
+    button(class="button" @click="downloadApp(`${phoneChoice},${appChoice}`)") Click here
 </template>
 <script>
 
@@ -22,8 +22,8 @@ import {mapState, mapActions} from 'vuex'
 
 
 export default {
-  name: 'PhoneCard',
-  props: ['phone'],
+  name: 'PlatformCard',
+  props: ['platform'],
   components: {
   },
   data () {
@@ -33,11 +33,13 @@ export default {
   },
    computed: {
     ...mapState({ 
-      currentapps: (state) => state.papps,
+      platforms: (state) => state.platforms,
+      phoneChoice: (state) => state.phoneChoice,
+      appChoice: (state) => state.appChoice
     })
   },
   methods: {
-    ...mapActions(['choosePhone','rmvPhone'])
+    ...mapActions(['rmvPlatform','choosePlatform','downloadApp'])
   }
 }
 </script>

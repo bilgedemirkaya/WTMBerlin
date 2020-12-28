@@ -16,7 +16,7 @@ export default {
     }) 
   },
   methods: {
-    ...mapActions(['fetchPhones','removePhoneComponent'])
+    ...mapActions(['fetchPhones','removeComponent'])
   },
   created() {
     this.fetchPhones()
@@ -26,7 +26,7 @@ export default {
 
 <template lang= "pug">
 h1 Welcome to the website where you can download new apps to your phone!
-h3 Please choose your phone or  <button class="button" @click="removePhoneComponent">  <span>Add new phone </span> </button>
+h3 Please choose your phone or  <button class="button" @click="removeComponent">  <span>Add new phone </span> </button>
 section(v-if="!isNew") 
   phone-card(v-for="phone in phones",:phone="phone")
 section(v-else)
@@ -71,7 +71,7 @@ body
   svg
     position: relative
     top: 0
-    margin-left: 10px
+    margin-left: 15px
     fill: none
     stroke-linecap: round
     stroke-linejoin: round
@@ -81,7 +81,7 @@ body
     transition: all .3s ease
   &:hover
     &:before
-      width: 100%
+      width: 110%
       background: rgba($primary,1)
     svg
       transform: translateX(0)

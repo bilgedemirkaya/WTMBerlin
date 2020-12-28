@@ -1,10 +1,10 @@
 <template lang="pug">
 article.container
-    h3 Add a new phone
+    h3 Add a new platform
     form(@submit.prevent="onSubmit")
-        input(type="text" v-model="phone" placeholder="Add Phone name...")
+        input(type="text" v-model="platform" placeholder="Add platform name...")
         input(type="submit" value="Submit" class="button" @click="() => clicked = true")
-    h3(v-if="clicked")  Thank you for adding a new phone 
+    h3(v-if="clicked")  Thank you for adding a new platform 
       span {{ countdown }}
 
 </template>
@@ -12,16 +12,16 @@ article.container
 <script>
 import { mapActions} from 'vuex'
 export default {
-    name: "newPhone",
+    name: "newPlatform",
     data() {
     return {
-      phone: "",
+      platform: "",
       countdown: 3,
       clicked: false
       }
     },
     methods: {
-        ...mapActions(["addPhone"]),
+        ...mapActions(["addPlatform"]),
         countDownTimer() {
           setTimeout(() => {
             this.countdown -= 1
@@ -31,11 +31,11 @@ export default {
 
             },
       onSubmit() {
-            let newPhone = {
-                name: this.phone
+            let newplatform = {
+                name: this.platform
             }
-        this.addPhone(newPhone)
-        this.phone = ' ' 
+        this.addPlatform(newplatform)
+        this.platform = ' ' 
         this.countDownTimer()
     }
     }

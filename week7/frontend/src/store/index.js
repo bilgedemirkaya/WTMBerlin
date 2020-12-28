@@ -5,9 +5,10 @@ export default createStore({
   state: {
     allPeople: [],
     phones: [],
-    apps: [],
+    platforms: [],
     papps: [],
     phoneChoice:'',
+    appChoice:'',
     isNew:false
   },
 
@@ -18,8 +19,8 @@ export default createStore({
     SET_PHONES(state,phones) {
       state.phones = phones
     },
-    SET_APPS(state,apps) {
-      state.apps = apps
+    SET_APPS(state,platforms) {
+      state.platforms = platforms
     },
     SET_PAPPS(state,personApps) {
       state.papps = personApps
@@ -27,11 +28,23 @@ export default createStore({
     SET_PHONE(state,phoneChoice) {
       state.phoneChoice = phoneChoice
     },
+    SET_APP(state,appChoice) {
+      state.appChoice = appChoice
+    },
     SET_ISNEW(state, isNew) {
       state.isNew = isNew
     },
     SET_NEWPHONE(state,data) {
       state.phones.unshift(data)
+    },
+    DEL_PHONE(state, id) {
+      state.phones = state.phones.filter(data => data.id !== id)
+    },
+    DEL_PLATF(state, id) {
+      state.platforms = state.platforms.filter(data => data.id !== id)
+    },
+    SET_NEWPLATF(state, data) {
+      state.platforms.unshift(data)
     }
   },
   actions: {
@@ -48,7 +61,7 @@ export default createStore({
       const phones = await axios.get('http://localhost:3000/phone/all/json')
       commit('SET_PHONES', phones.data)
     },
-    async fetchAps({commit}) { 
+    async fetchApps({commit}) { 
       const apps = await axios.get('http://localhost:3000/platform/all/json')
       commit('SET_APPS', apps.data)
     },
@@ -62,7 +75,7 @@ export default createStore({
       commit('SET_PHONE',phoneChoice)
       console.log(phoneChoice)
     },
-    removePhoneComponent({commit}) {
+    removeComponent({commit}) {
       const isNew = true
       commit('SET_ISNEW',isNew)
     },
@@ -70,8 +83,43 @@ export default createStore({
       const response = await axios.post('http://localhost:3000/phone',phone)
       commit('SET_NEWPHONE', response.data)
       console.log(response.data)
+      setTimeout(() => {
+        location.reload()
+      },3000)
     },
-  },
+    async rmvPhone({commit}, id) {
+      const resp = await axios.delete(`http://localhost:3000/phone/${id}`)
+      commit('DEL_PHONE', resp.data)
+      location.reload()
+    },
+    async rmvPlatform({commit}, id) {
+      const resp = await axios.delete(`http://localhost:3000/platform/${id}`)
+      commit('DEL_PLATF', resp.data)
+      location.reload()
+    },
+    async addPlatform({ commit }, platform) {
+      const response = await axios.post('http://localhost:3000/platform',platform)
+      commit('SET_NEWPLATF', response.data)
+      console.log(response.data)
+      setTimeout(() => {
+        location.reload()
+      },3000)
+    },
+    async downloadApp() {
+      let phoneId = this.state.phoneChoice
+      let appId = this.state.appChoice
+      let choisenapp = {app : appId}
+      const down = await axios.post(`http://localhost:3000/phone/${phoneId}/download`, choisenapp)
+      console.log(down)
+    },
+    async choosePlatform({commit},id) {
+      const platforms = await axios.get(`http://localhost:3000/platform/${id}`)
+      // save app choice
+      const appChoice = platforms.data._id
+      commit('SET_APP',appChoice)
+      console.log(appChoice)
+    },
+  }, 
   modules: {
   }
 })
