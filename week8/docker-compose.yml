@@ -1,0 +1,20 @@
+version: "3"
+services:
+  backend:
+    build: backend
+    environment:
+      MONGODB_CONNECTION_STRING: "mongodb://mongodb/wtm"
+      PORT: "3000"
+    ports:
+      - 3000:3000
+  frontend:
+    build: frontend
+    environment:
+      VUE_APP_API_URL: "http://localhost:3000"
+      PORT: "8081"
+    ports:
+      - 8081:8081
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - 27017:27017

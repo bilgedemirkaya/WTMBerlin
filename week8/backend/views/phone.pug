@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 the number of phones is #{phones.length}
+    each phone in phones
+        <hr>
+        h4 Id: #{phone.id}
+        h4 Phone Name : #{phone.name}
+        h4 Apps: #{phone.apps}
+        <hr>
