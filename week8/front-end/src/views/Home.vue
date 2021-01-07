@@ -26,7 +26,9 @@ export default {
 
 <template lang= "pug">
 h1 Welcome to the website where you can download new apps to your phone!
-h3 Please choose your phone or  <button class="button" @click="removeComponent">  <span>Add new phone </span> </button>
+h3 Please choose your phone or  
+  button(class="button" @click="removeComponent")
+    span Add new phone
 section(v-if="!isNew") 
   phone-card(v-for="phone in phones",:phone="phone")
 section(v-else)

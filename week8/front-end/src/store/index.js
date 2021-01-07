@@ -6,10 +6,11 @@ export default createStore({
     allPeople: [],
     phones: [],
     platforms: [],
-    papps: [],
+    currentapps: [],
     phoneChoice:'',
     appChoice:'',
-    isNew:false
+    isNew:false,
+    singlePhone: []
   },
 
   mutations: {
@@ -23,7 +24,7 @@ export default createStore({
       state.platforms = platforms
     },
     SET_PAPPS(state,personApps) {
-      state.papps = personApps
+      state.currentapps = personApps
     },
     SET_PHONE(state,phoneChoice) {
       state.phoneChoice = phoneChoice
@@ -45,13 +46,12 @@ export default createStore({
     },
     SET_NEWPLATF(state, data) {
       state.platforms.unshift(data)
+    },
+    GET_PHONE(state, phone) {
+      state.singlePhone = phone
     }
   },
   actions: {
-    incrementCounter({commit, state}) {
-      const newCount = state.counter + 1
-      commit('SET_COUNTER', newCount) //name the mutation
-    },
     async fetchPeople({commit}) {
       const allPeople = await axios.get(`${process.env.VUE_APP_API_URL}/person/all/json`)
      // console.log(allPeople)
@@ -110,10 +110,11 @@ export default createStore({
       },3000)
     },
     async downloadApp() {
-      let phoneId = this.state.phoneChoice
-      let appId = this.state.appChoice
+      const phoneId = this.state.phoneChoice
+      const appId = this.state.appChoice
       if (phoneId == '' || appId == '' ) {
         alert('You should both specify your phone and the app')
+        window.location = '/'
         return
       }
       const phone = await axios.get(`${process.env.VUE_APP_API_URL}/phone/${phoneId}`)
@@ -124,6 +125,7 @@ export default createStore({
       if(ids.includes(appId)) {
         alert('You already downloaded the app')
         window.location = '/'
+        return
       }
       let choisenapp = {app : appId}
       const down = await axios.post(`${process.env.VUE_APP_API_URL}/phone/${phoneId}/download`, choisenapp)
@@ -138,6 +140,17 @@ export default createStore({
       commit('SET_APP',appChoice)
       console.log(appChoice)
     },
+    async getSinglePhone({commit},id) {
+      try {
+        const singlePhone =  await axios.get(`${process.env.VUE_APP_API_URL}/phone/${id}`)
+        console.log(singlePhone)
+        commit('GET_PHONE', singlePhone.data)
+      }
+      catch {
+        alert('there is no such a phone')
+        window.location = '/'
+      }
+    }
   }, 
   modules: {
   }

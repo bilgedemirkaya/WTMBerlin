@@ -6,11 +6,7 @@ const PlatformSchema = new mongoose.Schema({
         required:true,
         minlength:3
     },
-    users: [{
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Phone',
-        autopopulate:true      
-    }],
+    users: Array,
     posts: Array
 })
 

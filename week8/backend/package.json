@@ -1,13 +1,9 @@
 {
   "name": "week-6",
   "version": "1.0.0",
-  "engines": {
-    "node": "15.4.0"
-    },
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js",
     "test": "ava --verbose --watch",
     "test-coverage": "nyc ava --verbose"
   },
@@ -20,7 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "flatted": "^2.0.1",
-    "mongoose": "^5.7.10",
+    "mongoose": "^5.11.8",
     "mongoose-autopopulate": "^0.9.1",
     "pug": "^2.0.4"
   },

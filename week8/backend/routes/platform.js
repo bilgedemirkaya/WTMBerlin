@@ -35,9 +35,4 @@ router.delete('/:id', async (req, res) => {
   res.send('ok')
 })
 
-router.delete('/all/delete', async (req,res) => { 
-  await PlatformService.deleteAll()
-  res.send('ok')
-})
-
 module.exports = router

@@ -1,5 +1,5 @@
 const BaseService = require('./base-service')
-const platformService = require('./platform-service')
+const platformService = require('../services/platform-service')
 
 class DownloadService extends BaseService {
     async downloadApp(phone, app){

@@ -1,3 +1,9 @@
+<template lang="pug">
+main
+    section
+      phone-card(:phone="phone")
+</template>
+
 <script>
 import phoneCard from '@/components/phone-card.vue'
 import { mapState, mapActions } from 'vuex'
@@ -8,22 +14,17 @@ export default {
   },
   computed: {
     ...mapState({
-             phones: (state) => state.phones[0],
-     })
+     phone: (state) => state.singlePhone,
+    }) 
   },
   methods: {
-    ...mapActions(['fetchPhones'])
+    ...mapActions(['getSinglePhone'])
   },
   created() {
-    this.fetchPhones(this.$route.params.id)
+    this.getSinglePhone(this.$route.params.id)
   }
 }
 </script>
 
-<template lang="pug">
-main
-    section
-      phone-card(:phone="phones")
-</template>
 
 
