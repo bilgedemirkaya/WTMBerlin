@@ -17,27 +17,22 @@ export default {
     data() {
     return {
       platform: "",
-      countdown: 3,
       clicked: false
       }
     },
+    computed: {
+    ...mapState({ 
+      countdown: (state) => state.countdown,
+    })},
     methods: {
-        ...mapActions(["addPlatform","bringComponent"]),
-        countDownTimer() {
-          setTimeout(() => {
-            this.countdown -= 1
-            this.countDownTimer()
-            }, 1000)
-            console.log(this.countdown)
-
-            },
+        ...mapActions(["addPlatform","bringComponent","countDownTimer"]),
       onSubmit() {
             let newplatform = {
                 name: this.platform
             }
-        this.addPlatform(newplatform)
-        this.platform = ' ' 
         this.countDownTimer()
+        this.addPlatform(newplatform)
+        this.platform =' ' 
     }
     }
 }

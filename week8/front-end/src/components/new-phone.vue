@@ -1,3 +1,32 @@
+<script>
+import { mapActions, mapState} from 'vuex'
+export default {
+    name: "newPhone",
+    data() {
+      return {
+        phone: "",
+        clicked: false
+        }
+    },
+    methods: {
+        ...mapActions(["addPhone","bringComponent","countDownTimer"]),
+      onSubmit() {
+        let newPhone = {
+              name: this.phone
+        }
+        this.countDownTimer()
+        this.addPhone(newPhone)
+        this.phone =" " 
+        }
+    },
+    computed: {
+    ...mapState({ 
+      countdown: (state) => state.countdown,
+    }),
+    }
+}
+</script>
+
 <template lang="pug">
 article.container
     h3 Add a new phone
@@ -9,39 +38,6 @@ article.container
       span {{ countdown }}
 
 </template>
-
-<script>
-import { mapActions} from 'vuex'
-export default {
-    name: "newPhone",
-    data() {
-    return {
-      phone: "",
-      countdown: 3,
-      clicked: false
-      }
-    },
-    methods: {
-        ...mapActions(["addPhone","bringComponent"]),
-        countDownTimer() {
-          setTimeout(() => {
-            this.countdown -= 1
-            this.countDownTimer()
-            }, 1000)
-            console.log(this.countdown)
-
-            },
-      onSubmit() {
-            let newPhone = {
-                name: this.phone
-            }
-        this.addPhone(newPhone)
-        this.phone = " " 
-        this.countDownTimer()
-    }
-    }
-}
-</script>
 
 <style scoped>
 form {

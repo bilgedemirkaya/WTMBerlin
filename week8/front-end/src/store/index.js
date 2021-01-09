@@ -3,20 +3,17 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    allPeople: [],
     phones: [],
     platforms: [],
     currentapps: [],
     phoneChoice:'',
     appChoice:'',
     isNew:false,
-    singlePhone: []
+    singlePhone: [],
+    countdown: 3,
   },
 
   mutations: {
-    SET_PPL(state,allPeople) {
-      state.allPeople = allPeople
-    },
     SET_PHONES(state,phones) {
       state.phones = phones
     },
@@ -49,6 +46,12 @@ export default createStore({
     },
     GET_PHONE(state, phone) {
       state.singlePhone = phone
+    },
+    RESET(state) {
+      state.countdown = 3;
+    },
+    COUNTDOWN(state) {
+      state.countdown--;
     }
   },
   actions: {
@@ -86,7 +89,6 @@ export default createStore({
     async addPhone({ commit }, phone) {
       const response = await axios.post(`${process.env.VUE_APP_API_URL}/phone`,phone)
       commit('SET_NEWPHONE', response.data)
-      console.log(response.data)
       setTimeout(() => {
         window.location = '/'
       },3000)
@@ -150,6 +152,15 @@ export default createStore({
         alert('there is no such a phone')
         window.location = '/'
       }
+    },
+    countDownTimer({ state, commit }) {
+      commit('RESET')
+      const interval = setInterval(() => {
+        commit('COUNTDOWN')
+        if (state.countdown === 0) {
+          clearInterval(interval)
+        }
+      }, 1000)
     }
   }, 
   modules: {
