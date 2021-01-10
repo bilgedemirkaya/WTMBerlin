@@ -1,17 +1,19 @@
 <script>
 import {mapActions, mapState} from 'vuex'
+
 export default {
     name: "newPlatform",
     data() {
-    return {
-      platform: "",
-      clicked: false
-      }
+      return {
+        platform: "",
+        clicked: false
+        }
     },
     computed: {
     ...mapState({ 
       countdown: (state) => state.countdown,
-    })},
+    })
+    },
     methods: {
         ...mapActions(["addPlatform","bringComponent","countDownTimer"]),
       onSubmit() {
@@ -21,7 +23,7 @@ export default {
         this.countDownTimer()
         this.addPlatform(newplatform)
         this.platform =' ' 
-    }
+        }
     }
 }
 </script>

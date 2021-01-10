@@ -3,7 +3,7 @@
 ## Project setup
 `npm install`
 
-## Compiles
+## Compile with
 `node index.js`
 
 ## To run live server 

@@ -1,3 +1,1 @@
-backend link : https://wtmb-backend.herokuapp.com/
-<br> 
-frontend link : https://wtmb-front.herokuapp.com/
+You can go to frontend and backend folders and seperately run their code

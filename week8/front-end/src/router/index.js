@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Phone from '../views/Phone.vue'
+import Platform from '../views/Platform.vue'
 
 const routes = [
   {
@@ -16,10 +17,7 @@ const routes = [
   {
     path: '/apps',
     name: 'Platform',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Platform.vue')
+    component: Platform
   }
 ]
 
