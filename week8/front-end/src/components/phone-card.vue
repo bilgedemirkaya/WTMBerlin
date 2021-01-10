@@ -52,7 +52,7 @@ article.card
 
 </template>
 
-<style scoped>
+<style>
 .card {
     display: inline-block;
     text-align: right;

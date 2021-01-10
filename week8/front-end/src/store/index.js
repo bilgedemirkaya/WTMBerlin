@@ -7,7 +7,6 @@ export default createStore({
     platforms: [],
     currentapps: [],
     phoneChoice:'',
-    appChoice:'',
     isNew:false,
     singlePhone: [],
     countdown: 3,
@@ -25,9 +24,6 @@ export default createStore({
     },
     SET_PHONE(state,phoneChoice) {
       state.phoneChoice = phoneChoice
-    },
-    SET_APP(state,appChoice) {
-      state.appChoice = appChoice
     },
     SET_ISNEW(state, isNew) {
       state.isNew = isNew
@@ -111,10 +107,9 @@ export default createStore({
         location.reload()
       },3000)
     },
-    async downloadApp() {
+    async downloadApp({commit}, appId) {
       const phoneId = this.state.phoneChoice
-      const appId = this.state.appChoice
-      if (phoneId == '' || appId == '' ) {
+      if (phoneId == '' || appId == null ) {
         alert('You should both specify your phone and the app')
         window.location = '/'
         return
@@ -134,13 +129,6 @@ export default createStore({
       alert("App downloaded, you can check if it is there in phones")
       console.log(down)
       window.location = '/'
-    },
-    async choosePlatform({commit},id) {
-      const platforms = await axios.get(`${process.env.VUE_APP_API_URL}/platform/${id}`)
-      // save app choice
-      const appChoice = platforms.data._id
-      commit('SET_APP',appChoice)
-      console.log(appChoice)
     },
     async getSinglePhone({commit},id) {
       try {
