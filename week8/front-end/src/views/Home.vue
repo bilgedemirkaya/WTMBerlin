@@ -33,10 +33,13 @@ section(v-if="!isNew")
   phone-card(v-for="phone in phones",:phone="phone")
 section(v-else)
   new-phone()
-
 </template>
 
 <style lang="sass">
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+
+@import '~pretty-checkbox/src/pretty-checkbox.scss'
+
 $color: #111
 $primary: #ffffff 
 
@@ -137,9 +140,5 @@ body
   100%
     transform: scale(700, 700)
     opacity: 0
-.img 
-  border: 1px solid white
-.img:hover
-  opacity: 0.7
 
 </style>

@@ -1,27 +1,5 @@
-<template lang='pug'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-article.card
-  h2.card-title
-  router-link.name(:to="phoneUrl" class="name") {{ phone.name }}  
-  button(class="rm-btn" @click="rmvPhone(`${phone._id}`)")
-      i(class="fa fa-remove")
-  input(
-    type='checkbox'
-    name='phone'
-    v-model="checked"
-    @change='choosePhone(`${phone._id}`)'
-  )
-  img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone" class="img")
-  h3(v-if="checked" class="current") Current Apps: 
-    h6(v-for="apps in currentapps" class="appname") - {{ apps.name }}
-  h4(v-if="checked") To download a new app into {{ phone.name }} please go 
-    router-link.name(:to="appUrl" style="color: rgb(212, 54, 54)") here
-
-</template>
 <script>
-
 import {mapState, mapActions} from 'vuex'
-
 
 export default {
   name: 'PhoneCard',
@@ -50,7 +28,30 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<template lang='pug'>
+article.card
+  h2.card-title
+    router-link.name(:to="phoneUrl" class="name") {{ phone.name }}
+    button(class="rm-btn" @click="rmvPhone(`${phone._id}`)") x
+  div(class="pretty p-default")
+    input(
+      id="phones"
+      type='checkbox'
+      name='phone'
+      v-model="checked"
+      @change='choosePhone(`${phone._id}`)'
+    )
+    div(class="state p-success")
+      img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone" class="img")
+    h3(v-if="checked" class="current") Current Apps: 
+      h6(v-for="apps in currentapps" class="appname") - {{ apps.name }}
+  div 
+    h5(v-if="checked") To download an app into {{phone.name}}... 
+      button(class="here")
+        router-link.name(:to="appUrl" class="clickme" style="color:white") click here 
+
+</template>
+
 <style scoped>
 .card {
     display: inline-block;
@@ -60,16 +61,14 @@ export default {
     border-radius: 5px;
     background: rgb(234, 241, 231);
     margin: 20px;
-    min-width: 200px;
+    min-width: 100px;
+    max-width: 500px;
 }
-input[type="checkbox"] {
-  display: block;
-}
+
 .rm-btn {
-  padding: 10px;
-  border: 4px solid rgb(212, 54, 54);
-  border-radius: 100%;
-  background-color: #fff1cc;
+  border: 2px solid rgb(209, 196, 119);
+  border-radius: 10%;
+  background-color:white;
   outline: none;
 }
 .rm-btn:hover {
@@ -77,6 +76,7 @@ input[type="checkbox"] {
    color:white;
 }
 .name {
+  float:left;
   margin: 15px;
   font-size: 18px;
   text-decoration: none;
@@ -86,10 +86,26 @@ input[type="checkbox"] {
   letter-spacing: 1px;
 }
 .appname { 
-  color: rgb(91, 172, 219)
+  color: rgb(18, 115, 172);
+  font-size: 16px;
 }
 .current {
   float:left;
   margin: 15px;
+}
+.here {
+  border: none;
+  outline: none;
+}
+
+.p-default {
+ border: 2px solid rgb(209, 196, 119);
+ background-color: white;
+ position: relative;
+ top: 1px;
+}
+.p-default:hover {
+  background-color:rgb(213, 231, 198);
+  padding: 5px;
 }
 </style>

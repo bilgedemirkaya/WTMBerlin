@@ -1,17 +1,5 @@
-<template lang="pug">
-article.container
-    h3 Add a new platform
-    form(@submit.prevent="onSubmit")
-        input(type="text" v-model="platform" placeholder="Add platform name...")
-        input(type="submit" value="Submit" class="button" @click="() => clicked = true")
-        button(type="button" value="Cancel" class="btn" @click="bringComponent") Cancel      
-    h3(v-if="clicked")  Thank you for adding a new platform 
-      span {{ countdown }}
-
-</template>
-
 <script>
-import { mapActions} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 export default {
     name: "newPlatform",
     data() {
@@ -37,6 +25,17 @@ export default {
     }
 }
 </script>
+<template lang="pug">
+article.container
+    h3 Add a new platform
+    form(@submit.prevent="onSubmit")
+        input(type="text" v-model="platform" placeholder="Add platform name...")
+        input(type="submit" value="Submit" class="button" @click="() => clicked = true")
+        button(type="button" value="Cancel" class="btn" @click="bringComponent") Cancel      
+    h3(v-if="clicked")  Thank you for adding a new platform 
+      span {{ countdown }}
+
+</template>
 
 <style scoped>
 form {

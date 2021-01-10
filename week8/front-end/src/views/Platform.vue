@@ -1,13 +1,3 @@
-<template lang="pug">
-<div>
-  h3 Please choose your social platform or  <button class="button" @click="removeComponent">  <span>Add a new social platform </span> </button>
-  section(v-if="!isNew") 
-    platform-card(v-for="platform in platforms",:platform="platform")
-  section(v-else)
-    new-platform()
-</div>
-</template>
-
 <script> 
 import PlatformCard from '@/components/platform-card.vue'
 import {mapState, mapActions} from 'vuex'
@@ -33,3 +23,12 @@ export default {
   }
 }
 </script>
+
+<template lang="pug">
+h3 Please choose your social platform or  <button class="button" @click="removeComponent">  <span>Add a new social platform </span> </button>
+  section(v-if="!isNew") 
+    platform-card(v-for="platform in platforms",:platform="platform")
+  section(v-else)
+    new-platform()
+
+</template>

@@ -1,12 +1,7 @@
-<template lang="pug">
-main
-    section
-      phone-card(:phone="phone")
-</template>
-
 <script>
 import phoneCard from '@/components/phone-card.vue'
 import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'Phone',
   components: {
@@ -26,5 +21,8 @@ export default {
 }
 </script>
 
-
-
+<template lang="pug">
+main
+  section
+    phone-card(:phone="phone")
+</template>
