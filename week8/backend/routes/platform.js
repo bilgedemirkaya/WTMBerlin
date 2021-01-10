@@ -19,12 +19,6 @@ router.get('/:id', async (req, res) => {
     res.send(platform)
   })
 
-router.get('/:id/json', async (req, res) => {
-    const platform = await PlatformService.find(req.params.id)
-    if (!platform) res.status(404)
-    res.send(platform)
-  })
-
 router.post('/', async (req, res) => {
     const platform = await PlatformService.add(req.body)
     res.send(platform)

@@ -44,7 +44,7 @@ article.card
     div(class="state p-success")
       img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone" class="img")
     h3(v-if="checked" class="current") Current Apps: 
-      h6(v-for="apps in currentapps" class="appname") - {{ apps.name }}
+      p(v-for="apps in currentapps" class="appname") {{ apps.name }} ✓
   div 
     h5(v-if="checked") To download an app into {{phone.name}}... 
       button(class="here")
