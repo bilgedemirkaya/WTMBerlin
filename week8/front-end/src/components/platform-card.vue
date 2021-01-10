@@ -27,10 +27,9 @@ export default {
 article.card
   h2.card-title 
     h2.name {{platform.name}}
-    button(class="rm-btn" @click="rmvPlatform(`${platform._id}`)") x
+    button(class='rm-btn' @click='rmvPlatform(`${platform._id}`)') x
     div
-      button(class="clickme" @click="downloadApp(`${platform._id}`)") Download
-
+      button(class='clickme' @click='downloadApp(`${platform._id}`)') Download
 </template>
 
 <style>

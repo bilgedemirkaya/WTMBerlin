@@ -21,8 +21,8 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang='pug'>
 main
   section
-    phone-card(:phone="phone")
+    phone-card(:phone='phone')
 </template>

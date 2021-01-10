@@ -1,22 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Phone from '../views/Phone.vue'
-import Platform from '../views/Platform.vue'
+import { createRouter, createWebHistory } from "vue-router"
+import Home from "../views/Home.vue"
+import Phone from "../views/Phone.vue"
+import Platform from "../views/Platform.vue"
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
     component: Home
   },
   {
-    path: '/phone/:id',
-    name: 'phone',
+    path: "/phone/:id",
+    name: "phone",
     component: Phone
   },
   {
-    path: '/apps',
-    name: 'Platform',
+    path: "/apps",
+    name: "Platform",
     component: Platform
   }
 ]

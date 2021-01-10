@@ -1,12 +1,12 @@
-import { createStore } from 'vuex'
-import axios from 'axios'
+import { createStore } from "vuex"
+import axios from "axios"
 
 export default createStore({
   state: {
     phones: [],
     platforms: [],
     currentapps: [],
-    phoneChoice: '',
+    phoneChoice: "",
     isNew: false,
     singlePhone: [],
     countdown: 3,
@@ -65,54 +65,54 @@ export default createStore({
   actions: { 
     async fetchPeople({ commit }) {
       const allPeople = await axios.get(`${process.env.VUE_APP_API_URL}/person/all/json`)
-      commit('SET_PPL', allPeople.data)
+      commit("SET_PPL", allPeople.data)
     },
     async fetchPhones({ commit }) { 
       const phones = await axios.get(`${process.env.VUE_APP_API_URL}/phone/all/json`)
-      commit('SET_PHONES', phones.data)
+      commit("SET_PHONES", phones.data)
     },
     async fetchApps({ commit }) { 
       const apps = await axios.get(`${process.env.VUE_APP_API_URL}/platform/all/json`)
-      commit('SET_APPS', apps.data)
+      commit("SET_APPS", apps.data)
     },
     async choosePhone({ commit }, id) {
       // get current apps
       const personApps = await axios.get(`${process.env.VUE_APP_API_URL}/phone/${id}`)
-      commit('SET_PAPPS', personApps.data.apps)
+      commit("SET_PAPPS", personApps.data.apps)
 
       // save phone choice
       const phoneChoice = personApps.data._id
-      commit('SET_PHONE', phoneChoice)
+      commit("SET_PHONE", phoneChoice)
     },
     removeComponent({ commit }) {
       const isNew = true
-      commit('SET_ISNEW', isNew)
+      commit("SET_ISNEW", isNew)
     },
     bringComponent({ commit }) {
       const isNew = false
-      commit('SET_ISNEW', isNew)
+      commit("SET_ISNEW", isNew)
     },
     async addPhone({ commit }, phone) {
       const response = await axios.post(`${process.env.VUE_APP_API_URL}/phone`, phone)
-      commit('SET_NEWPHONE', response.data)
+      commit("SET_NEWPHONE", response.data)
       
       setTimeout(() => {
-        window.location = '/'
+        window.location = "/"
       }, 3000)
     },
     async rmvPhone({ commit }, id) {
       const resp = await axios.delete(`${process.env.VUE_APP_API_URL}/phone/${id}`)
-      commit('DEL_PHONE', resp.data)
-      window.location = '/'
+      commit("DEL_PHONE", resp.data)
+      window.location = "/"
     },
     async rmvPlatform({ commit }, id) {
       const resp = await axios.delete(`${process.env.VUE_APP_API_URL}/platform/${id}`)
-      commit('DEL_PLATF', resp.data)
+      commit("DEL_PLATF", resp.data)
       location.reload()
     },
     async addPlatform({ commit }, platform) {
       const response = await axios.post(`${process.env.VUE_APP_API_URL}/platform`, platform)
-      commit('SET_NEWPLATF', response.data)
+      commit("SET_NEWPLATF", response.data)
       
       setTimeout(() => {
         location.reload()
@@ -122,9 +122,9 @@ export default createStore({
       const phoneId = this.state.phoneChoice
       const ids = []
 
-      if (phoneId == '' || appId == null ) {
-        alert('You should both specify your phone and the app')
-        window.location = '/'
+      if (phoneId == "" || appId == null ) {
+        alert("You should both specify your phone and the app")
+        window.location = "/"
         return
       }
 
@@ -134,32 +134,32 @@ export default createStore({
       })
 
       if (ids.includes(appId)) {
-        alert('You already downloaded the app')
-        window.location = '/'
+        alert("You already downloaded the app")
+        window.location = "/"
         return
       }
 
       const choisenapp = { app: appId }
       await axios.post(`${process.env.VUE_APP_API_URL}/phone/${phoneId}/download`, choisenapp)
       alert("App downloaded, you can check if it is there in phones")
-      window.location = '/'
+      window.location = "/"
     },
 
     async getSinglePhone({ commit }, id) {
       try {
         const singlePhone = await axios.get(`${process.env.VUE_APP_API_URL}/phone/${id}`)
-        commit('GET_PHONE', singlePhone.data)
+        commit("GET_PHONE", singlePhone.data)
       }
       catch (err) {
-        alert('there is no such a phone', err)
-        window.location = '/'
+        alert("there is no such a phone", err)
+        window.location = "/"
       }
     },
     countDownTimer({ state, commit }) {
-      commit('RESET')
+      commit("RESET")
 
       const interval = setInterval(() => {
-        commit('COUNTDOWN')
+        commit("COUNTDOWN")
         if (state.countdown === 0) {
           clearInterval(interval)
         }

@@ -31,25 +31,24 @@ export default {
 <template lang='pug'>
 article.card
   h2.card-title
-    router-link.name(:to="phoneUrl" class="name") {{ phone.name }}
-    button(class="rm-btn" @click="rmvPhone(`${phone._id}`)") x
-  div(class="pretty p-default")
+    router-link.name(:to='phoneUrl' class='name') {{ phone.name }}
+    button(class='rm-btn' @click='rmvPhone(`${phone._id}`)') x
+  div(class='pretty p-default')
     input(
-      id="phones"
+      id='phones'
       type='checkbox'
       name='phone'
-      v-model="checked"
+      v-model='checked'
       @change='choosePhone(`${phone._id}`)'
     )
-    div(class="state p-success")
-      img(:src="`https://picsum.photos/300/200?random=${phone._id}`", alt="phone" class="img")
+    div(class='state p-success')
+      img(:src='`https://picsum.photos/300/200?random=${phone._id}`', alt='phone' class='img')
     h3(v-if="checked" class="current") Current Apps: 
       p(v-for="apps in currentapps" class="appname") {{ apps.name }} ✓
   div 
     h5(v-if="checked") To download an app into {{phone.name}}... 
       button(class="here")
         router-link.name(:to="appUrl" class="clickme" style="color:white") click here 
-
 </template>
 
 <style>

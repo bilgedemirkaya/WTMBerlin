@@ -30,5 +30,4 @@ h3 Please choose your social platform or  <button class="button" @click="removeC
     platform-card(v-for="platform in platforms",:platform="platform")
   section(v-else)
     new-platform()
-
 </template>

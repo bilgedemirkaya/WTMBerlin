@@ -36,7 +36,6 @@ article.container
         button(type="button" value="Cancel" class="btn" @click="bringComponent") Cancel      
     h3(v-if="clicked")  Thank you for adding a new phone 
       span {{ countdown }}
-
 </template>
 
 <style scoped>
