@@ -65,5 +65,6 @@ module.exports = {
         "prefer-const": "error",
         "space-before-blocks": [ "error", "always" ],
         "space-infix-ops": [ "error", { "int32Hint": false } ],
+        "quotes": ["error", "double"]
     }
 };
