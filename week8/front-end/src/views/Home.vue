@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     ...mapState({
-     phones: (state) => state.phones,
+     phones: (state) => state.phoneModul.phones,
      isNew: (state) => state.isNew
     }) 
   },

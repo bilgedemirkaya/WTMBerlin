@@ -13,7 +13,7 @@ export default {
   },
    computed: {
     ...mapState({ 
-      currentapps: (state) => state.currentapps,
+      currentapps: (state) => state.phoneModul.currentapps,
     }),
     phoneUrl() {
       return `/phone/${this.phone._id}`

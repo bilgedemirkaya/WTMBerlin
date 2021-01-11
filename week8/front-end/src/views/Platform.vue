@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     ...mapState({
-     platforms: (state) => state.platforms,
+     platforms: (state) => state.appModul.platforms,
      isNew: (state) => state.isNew
     }) 
   },

@@ -9,7 +9,7 @@ export default {
   },
   computed: {
     ...mapState({
-     phone: (state) => state.singlePhone,
+     phone: (state) => state.phoneModul.singlePhone,
     }) 
   },
   methods: {

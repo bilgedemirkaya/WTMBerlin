@@ -13,8 +13,8 @@ export default {
   },
    computed: {
     ...mapState({ 
-      platforms: (state) => state.platforms,
-      phoneChoice: (state) => state.phoneChoice,
+      platforms: (state) => state.appModul.platforms,
+      phoneChoice: (state) => state.phoneModul.phoneChoice,
     })
   },
   methods: {
