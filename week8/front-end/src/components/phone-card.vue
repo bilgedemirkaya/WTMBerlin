@@ -64,6 +64,9 @@ article.card
     width: fit-content;
     box-shadow: 1px 1px;
 }
+.card:hover {
+  background: rgb(224, 233, 220);
+}
 .rm-btn {
   border: none;
   outline: none;
@@ -103,9 +106,10 @@ article.card
   border: 1px solid rgb(227, 238, 226);
   border-radius: 5px;
   margin:10px;
+  background: rgb(247, 247, 247);
 }
 .p-default:hover {
-  background-color:rgb(213, 231, 198); 
+  background-color: white ;
 }
 .clickme {
   font-family:sans-serif !important;
@@ -113,4 +117,5 @@ article.card
 .img {
   border-radius: 5px;
 }
+
 </style>

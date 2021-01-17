@@ -25,15 +25,15 @@ export default {
 </script>
 
 <template lang= "pug">
-div(class="main")
+div(style="margin-left:30px;")
   h1 Welcome to the website where you can download new apps to your phone!
   h3 Please choose your phone or  
     button(class="button" @click="removeComponent")
       span Add new phone
-  section(v-if="!isNew" class="box") 
-    phone-card(v-for="phone in phones",:phone="phone")
-  section(v-else)
-    new-phone()
+section(v-if="!isNew" class="box") 
+  phone-card(v-for="phone in phones",:phone="phone")
+section(v-else)
+  new-phone()
 </template>
 
 <style lang="sass">
@@ -43,8 +43,6 @@ div(class="main")
 $color: #111
 $primary: #ffffff 
 
-.title 
-  text-align: center
 .button
   position: relative
   margin: auto

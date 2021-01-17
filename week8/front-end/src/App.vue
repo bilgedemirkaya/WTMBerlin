@@ -22,6 +22,7 @@
 }
 #nav a {
   font-weight: bold;
+  text-align: center;
   color: #2c3e50;
   text-decoration: none;
 }
