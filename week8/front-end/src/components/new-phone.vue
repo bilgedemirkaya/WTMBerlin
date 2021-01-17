@@ -29,7 +29,7 @@ export default {
 
 <template lang="pug">
 article.container
-    h1 Add a new phone
+    h3 Add a new phone
     form(@submit.prevent="onSubmit")
         input(type="text" v-model="phone" placeholder="Add Phone name...")
         button(type="submit" class="btn submit" @click="() => clicked = true") Submit
@@ -43,7 +43,7 @@ input[type="text"] {
   padding: 10px;
   border: 1px solid #000000;
   outline: 0;
-  width: 100%;
+  width: 90%;
   margin-bottom: 15px;
 }
 .container { 
@@ -80,6 +80,10 @@ span
 background: black;
 }
 .cancel {
-  background: red;
+  background: rgb(170, 11, 11);
+}
+.container {
+  background-color: #e4f5e7;
+  box-shadow: 1px 2px;
 }
 </style>

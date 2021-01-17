@@ -44,7 +44,7 @@ $color: #111
 $primary: #ffffff 
 
 body 
-  background-color: #f0faf2
+  background-color:
 .title 
   text-align: center
 .button
