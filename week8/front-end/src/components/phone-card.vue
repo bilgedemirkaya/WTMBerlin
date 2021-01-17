@@ -56,12 +56,13 @@ article.card
     vertical-align: top;
     text-align: center;
     padding: 25px;
-    border: 4px solid rgb(227, 238, 226);
+    border: 2px solid rgb(227, 238, 226);
     border-radius: 5px;
     background: rgb(234, 241, 231);
     margin: 20px;
     height: fit-content;
     width: fit-content;
+    box-shadow: 1px 1px;
 }
 .rm-btn {
   border: none;
@@ -99,14 +100,17 @@ article.card
   outline: none;
 }
 .p-default {
- border: 2px solid rgb(209, 196, 119);
- background-color: white;
- margin:10px;
+  border: 1px solid rgb(227, 238, 226);
+  border-radius: 5px;
+  margin:10px;
 }
 .p-default:hover {
   background-color:rgb(213, 231, 198); 
 }
 .clickme {
   font-family:sans-serif !important;
+}
+.img {
+  border-radius: 5px;
 }
 </style>

@@ -43,8 +43,6 @@ div(class="main")
 $color: #111
 $primary: #ffffff 
 
-body 
-  background-color:
 .title 
   text-align: center
 .button
