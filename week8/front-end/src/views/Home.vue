@@ -29,7 +29,7 @@ h1 Welcome to the website where you can download new apps to your phone!
 h3 Please choose your phone or  
   button(class="button" @click="removeComponent")
     span Add new phone
-section(v-if="!isNew") 
+section(v-if="!isNew" class="box") 
   phone-card(v-for="phone in phones",:phone="phone")
 section(v-else)
   new-phone()
@@ -44,6 +44,8 @@ $primary: #ffffff
 
 body 
   background-color: #f0faf2
+.box
+  display: flex
 .button
   position: relative
   margin: auto

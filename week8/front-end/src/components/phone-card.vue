@@ -29,11 +29,12 @@ export default {
 </script>
 
 <template lang='pug'>
+main
 article.card
+  button(class='rm-btn' @click='rmvPhone(`${phone._id}`)') X
   h2.card-title
     router-link.name(:to='phoneUrl' class='name') {{ phone.name }}
-    button(class='rm-btn' @click='rmvPhone(`${phone._id}`)') x
-  div(class='pretty p-default')
+  div(class='pretty p-default' style="margin:auto;")
     input(
       id='phones'
       type='checkbox'
@@ -42,69 +43,76 @@ article.card
       @change='choosePhone(`${phone._id}`)'
     )
     div(class='state p-success')
-      img(:src='`https://picsum.photos/300/200?random=${phone._id}`', alt='phone' class='img')
+      div(class='imgClass')
+        img(:src='`https://picsum.photos/300/200?random=${phone._id}`', alt='phone' class='img')
     h3(v-if="checked" class="current") Current Apps: 
       p(v-for="apps in currentapps" class="appname") {{ apps.name }} ✓
-  div 
-    h5(v-if="checked") To download an app into {{phone.name}}... 
+  div(class="download")
+    h5(v-if="checked") To download an app into {{phone.name}}... <br><br>
       button(class="here")
-        router-link.name(:to="appUrl" class="clickme" style="color:white") click here 
+        router-link.name(:to="appUrl" class="clickme" ) click here 
 </template>
 
 <style>
 .card {
-    display: inline-block;
-    text-align: right;
+    flex:1;
+    text-align: center;
     padding: 20px;
     border: 4px solid rgb(227, 238, 226);
     border-radius: 5px;
     background: rgb(234, 241, 231);
     margin: 20px;
-    min-width: 100px;
-    max-width: 500px;
-}
 
+}
 .rm-btn {
-  border: 2px solid rgb(209, 196, 119);
+  border: none;
   border-radius: 10%;
-  background-color:white;
   outline: none;
+  padding: 10px;
+  float: right;
 }
 .rm-btn:hover {
    background-color: rgb(212, 54, 54);
    color:white;
 }
+.card-title {
+ text-align: center; 
+}
 .name {
-  float:left;
-  margin: 15px;
-  font-size: 18px;
   text-decoration: none;
   color: black;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
+  font-size: 18px;
+
 }
 .appname { 
   color: rgb(18, 115, 172);
   font-size: 16px;
 }
 .current {
-  float:left;
+  text-align: center;
   margin: 15px;
 }
 .here {
   border: none;
   outline: none;
 }
-
 .p-default {
  border: 2px solid rgb(209, 196, 119);
  background-color: white;
- position: relative;
- top: 1px;
 }
 .p-default:hover {
-  background-color:rgb(213, 231, 198);
-  padding: 5px;
+  background-color:rgb(213, 231, 198); 
 }
+.clickme {
+  font-family:sans-serif !important;
+}
+.imgClass {
+  vertical-align: center;
+  justify-content: center;
+  margin: auto;
+}
+
 </style>

@@ -26,7 +26,7 @@ export default {
 
 <template lang="pug">
 h3 Please choose your social platform or  <button class="button" @click="removeComponent">  <span>Add a new social platform </span> </button>
-  section(v-if="!isNew") 
+  section(v-if="!isNew" class="box") 
     platform-card(v-for="platform in platforms",:platform="platform")
   section(v-else)
     new-platform()
