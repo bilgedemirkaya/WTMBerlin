@@ -26,8 +26,15 @@ export default {
 <template lang='pug'>
 article.card
   button(class='rm-btn' @click='rmvPlatform(`${platform._id}`)') X
+  <br>
   h2.card-title 
     h2.name {{platform.name}}
     <hr>
-  button(class='clickme' @click='downloadApp(`${platform._id}`)') Download
+    button(class='clickme' @click='downloadApp(`${platform._id}`)') Download
 </template>
+
+<style scoped>
+.card {
+  width: 300px;
+}
+</style>

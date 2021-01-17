@@ -29,33 +29,22 @@ export default {
 
 <template lang="pug">
 article.container
-    h3 Add a new phone
+    h1 Add a new phone
     form(@submit.prevent="onSubmit")
         input(type="text" v-model="phone" placeholder="Add Phone name...")
-        input(type="submit" value="Submit" class="button" @click="() => clicked = true")
-        button(type="button" value="Cancel" class="btn" @click="bringComponent") Cancel      
+        button(type="submit" class="btn submit" @click="() => clicked = true") Submit
+        button(class="btn cancel" @click="bringComponent") Cancel      
     h3(v-if="clicked")  Thank you for adding a new phone 
       span {{ countdown }}
 </template>
 
-<style scoped>
-form {
-  display: flex;
-  align-items: stretch;
-}
+<style>
 input[type="text"] {
-  flex: 8;
   padding: 10px;
-  border: 1px solid #a38b00;
+  border: 1px solid #000000;
   outline: 0;
-}
-input[type="submit"] {
-  flex: 2;
-  margin: 10px;
-  background: black;
-  color: white;
-  border: 1px #2a7553 solid;
-  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
 }
 .container { 
    display: inline-block;
@@ -76,10 +65,21 @@ span
   vertical-align: middle;
 }
 .btn {
-  padding: 20px;
-  margin: 15px;
-  border-radius: 15px;
-  background: #e80909;
   color: white;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding:15px;
+  border-radius: 5%;
+  margin-right: 25px;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+.submit {
+background: black;
+}
+.cancel {
+  background: red;
 }
 </style>

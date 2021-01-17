@@ -28,8 +28,8 @@ const mutations= {
         state.phoneChoice = phoneChoice
       },
 
-      SET_PAPPS(state, personApps) {
-        state.currentapps = personApps
+      SET_CURRENTAPPS(state, currentapps) {
+        state.currentapps = currentapps
       },
 }
 
@@ -68,7 +68,7 @@ const actions = {
      async choosePhone({ commit }, id) {
         // get current apps
         const personApps = await axios.get(`${process.env.VUE_APP_API_URL}/phone/${id}`)
-        commit("SET_PAPPS", personApps.data.apps)
+        commit("SET_CURRENTAPPS", personApps.data.apps)
   
         // save phone choice
         const phoneChoice = personApps.data._id
