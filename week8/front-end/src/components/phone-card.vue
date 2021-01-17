@@ -43,14 +43,12 @@ article.card
       @change='choosePhone(`${phone._id}`)'
     )
     div(class='state p-success')
-      div(class='imgClass')
-        img(:src='`https://picsum.photos/300/200?random=${phone._id}`', alt='phone' class='img')
+      img(:src='`https://picsum.photos/300/200?random=${phone._id}`', alt='phone' class='img')
     h3(v-if="checked" class="current") Current Apps: 
       p(v-for="apps in currentapps" class="appname") {{ apps.name }} ✓
-  div(class="download")
-    h5(v-if="checked") To download an app into {{phone.name}}... <br><br>
-      button(class="here")
-        router-link.name(:to="appUrl" class="clickme" ) click here 
+  h5(v-if="checked") To download an app into {{phone.name}}... <br><br>
+    button(class="here")
+      router-link.name(:to="appUrl" class="clickme" ) click here 
 </template>
 
 <style>
@@ -62,7 +60,6 @@ article.card
     border-radius: 5px;
     background: rgb(234, 241, 231);
     margin: 20px;
-
 }
 .rm-btn {
   border: none;
@@ -89,11 +86,11 @@ article.card
 }
 .appname { 
   color: rgb(18, 115, 172);
-  font-size: 16px;
+  font-size: 12px;
 }
 .current {
   text-align: center;
-  margin: 15px;
+  margin: 5px;
 }
 .here {
   border: none;
@@ -109,10 +106,4 @@ article.card
 .clickme {
   font-family:sans-serif !important;
 }
-.imgClass {
-  vertical-align: center;
-  justify-content: center;
-  margin: auto;
-}
-
 </style>
