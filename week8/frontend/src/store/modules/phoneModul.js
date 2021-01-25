@@ -16,7 +16,7 @@ const mutations= {
         state.phones.unshift(data)
       },
   
-      DEL_PHONE(state, id) {
+      DELETE_PHONE(state, id) {
         state.phones = state.phones.filter(data => data.id !== id)
       },
   
@@ -48,9 +48,9 @@ const actions = {
         }, 3000)
       },
 
-      async rmvPhone({ commit }, id) {
+      async removePhone({ commit }, id) {
         const resp = await axios.delete(`${process.env.VUE_APP_API_URL}/phone/${id}`)
-        commit("DEL_PHONE", resp.data)
+        commit("DELETE_PHONE", resp.data)
         window.location = "/"
       },
 

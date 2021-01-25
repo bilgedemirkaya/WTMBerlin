@@ -9,7 +9,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["addPhone","bringComponent","countDownTimer"]),
+        ...mapActions(["addPhone","cancelNew","countDownTimer"]),
       onSubmit() {
         let newPhone = {
               name: this.phone
@@ -32,8 +32,8 @@ article.container
     h3 Add a new phone
     form(@submit.prevent="onSubmit")
         input(type="text" v-model="phone" placeholder="Add Phone name...")
-        button(type="submit" class="btn submit" @click="() => clicked = true") Submit
-        button(class="btn cancel" @click="bringComponent") Cancel      
+        button(type="submit" class="btn submit" @click="clicked = true") Submit
+        button(class="btn cancel" @click="cancelNew") Cancel      
     h3(v-if="clicked")  Thank you for adding a new phone 
       span {{ countdown }}
 </template>
@@ -53,6 +53,8 @@ input[type="text"] {
    border-radius: 3px;
    margin: 20px;
    min-width: 200px;
+   background-color: #f7f0dd;
+   box-shadow: 1px 2px;
 }
 span
 {
@@ -82,8 +84,5 @@ background: black;
 .cancel {
   background: rgb(170, 11, 11);
 }
-.container {
-  background-color: #e4f5e7;
-  box-shadow: 1px 2px;
-}
+
 </style>

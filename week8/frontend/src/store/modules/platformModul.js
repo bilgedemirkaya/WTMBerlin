@@ -9,11 +9,11 @@ const mutations= {
         state.platforms = platforms
     },
 
-    DEL_PLATF(state, id) {
+    DEL_PLATFORM(state, id) {
         state.platforms = state.platforms.filter(data => data.id !== id)
     },
   
-    SET_NEWPLATF(state, data) {
+    SET_NEWPLATFORM(state, data) {
         state.platforms.unshift(data)
     }
 }
@@ -26,13 +26,13 @@ const actions = {
 
     async rmvPlatform({ commit }, id) {
         const resp = await axios.delete(`${process.env.VUE_APP_API_URL}/platform/${id}`)
-        commit("DEL_PLATF", resp.data)
+        commit("DEL_PLATFORM", resp.data)
         location.reload()
       },
       
     async addPlatform({ commit }, platform) {
         const response = await axios.post(`${process.env.VUE_APP_API_URL}/platform`, platform)
-        commit("SET_NEWPLATF", response.data)
+        commit("SET_NEWPLATFORM", response.data)
         
         setTimeout(() => {
           location.reload()

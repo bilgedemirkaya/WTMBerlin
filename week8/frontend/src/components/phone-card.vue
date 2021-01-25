@@ -23,14 +23,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['choosePhone','rmvPhone'])
+    ...mapActions(['choosePhone','removePhone'])
   }
 }
 </script>
 
 <template lang='pug'>
 article.card
-  button(class='rm-btn' @click='rmvPhone(`${phone._id}`)') X
+  button(class='rm-btn' @click='removePhone(`${phone._id}`)') X
   h2.card-title
     router-link.name(:to='phoneUrl' class='name') {{ phone.name }}
   div(class='pretty p-default' )
@@ -47,7 +47,7 @@ article.card
         p(v-for="apps in currentapps" class="appname") {{ apps.name }} ✓
   h5(v-if="checked") To download an app into {{phone.name}}... <br><br>
     button(class="here")
-      router-link.name(:to="appUrl" class="clickme" ) click here 
+      router-link.name(:to="appUrl" class="downloadButton" ) click here 
 </template>
 
 <style>
@@ -58,21 +58,21 @@ article.card
     padding: 25px;
     border: 2px solid rgb(227, 238, 226);
     border-radius: 5px;
-    background: rgb(234, 241, 231);
+    background: #f7f0dd;
     margin: 20px;
     height: fit-content;
     width: fit-content;
     box-shadow: 1px 1px;
 }
 .card:hover {
-  background: rgb(224, 233, 220);
+  background: rgb(238, 232, 196);
 }
 .rm-btn {
   border: none;
   outline: none;
   padding: 5px;
   float: right;
-  background: rgb(234, 241, 231);
+  background: #f7f0dd;
 }
 .rm-btn:hover {
    background-color: rgb(212, 54, 54);
@@ -101,6 +101,7 @@ article.card
 .here {
   border: none;
   outline: none;
+  background: rgb(238, 232, 196);
 }
 .p-default {
   border: 1px solid rgb(227, 238, 226);
@@ -111,7 +112,7 @@ article.card
 .p-default:hover {
   background-color: white ;
 }
-.clickme {
+.downloadButton {
   font-family:sans-serif !important;
 }
 .img {

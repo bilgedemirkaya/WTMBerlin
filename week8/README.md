@@ -1,1 +1,1 @@
-You can go to frontend and backend folders and seperately run their code
+You can go to frontend and backend folders and seperately run the code

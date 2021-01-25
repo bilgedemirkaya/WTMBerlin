@@ -16,7 +16,7 @@ export default {
     }) 
   },
   methods: {
-    ...mapActions(['fetchPhones','removeComponent'])
+    ...mapActions(['fetchPhones','addNew'])
   },
   created() {
     this.fetchPhones()
@@ -28,7 +28,7 @@ export default {
 div(style="margin-left:30px;")
   h1 Welcome to the website where you can download new apps to your phone!
   h3 Please choose your phone or  
-    button(class="button" @click="removeComponent")
+    button(class="button" @click="addNew")
       span Add new phone
 section(v-if="!isNew" class="box") 
   phone-card(v-for="phone in phones",:phone="phone")
@@ -45,6 +45,7 @@ $primary: #ffffff
 
 .button
   position: relative
+  cursor: pointer
   margin: auto
   padding: 17px 22px
   transition: all .1s ease
@@ -85,13 +86,13 @@ $primary: #ffffff
   &:hover
     &:before
       width: 110%
-      background: rgba(#fadcb6,1)
+      background: rgba(#fff1cc,1)
     svg
       transform: translateX(0)
   &:active
     transform: scale(.94)
 
-.clickme
+.downloadButton
   font-family: 'Bungee', cursive
   font-size: 0.7rem
   position: relative

@@ -1,6 +1,6 @@
 import { createStore } from "vuex"
 import phoneModul from './modules/phoneModul'
-import appModul from './modules/appModul'
+import platformModul from './modules/platformModul'
 
 export default createStore({
   state: {
@@ -23,12 +23,12 @@ export default createStore({
   },
 
   actions: { 
-    removeComponent({ commit }) {
+    addNew({ commit }) {
       const isNew = true
       commit("SET_ISNEW", isNew)
     },
     
-    bringComponent({ commit }) {
+    cancelNew({ commit }) {
       const isNew = false
       commit("SET_ISNEW", isNew)
     },
@@ -47,6 +47,6 @@ export default createStore({
 
   modules: {
     phoneModul,
-    appModul
+    platformModul
   }
 })

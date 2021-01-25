@@ -30,7 +30,7 @@ article.card
   h2.card-title 
     h2.name {{platform.name}}
     <hr>
-    button(class='clickme' @click='downloadApp(`${platform._id}`)') Download
+    button(class='downloadButton' @click='downloadApp(`${platform._id}`)') Download
 </template>
 
 <style scoped>
