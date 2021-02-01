@@ -7,7 +7,7 @@ export default {
   name: 'Platform',
   components: {
     PlatformCard,
-    newPlatform
+    newPlatform,
   },
   computed: {
     ...mapState({

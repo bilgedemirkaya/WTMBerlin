@@ -53,8 +53,9 @@ input[type="text"] {
    border-radius: 3px;
    margin: 20px;
    min-width: 200px;
-   background-color: #f7f0dd;
+   background-color: #edf7fa;
    box-shadow: 1px 2px;
+   margin-bottom: 50px;
 }
 span
 {

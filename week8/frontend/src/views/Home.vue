@@ -1,13 +1,15 @@
 <script>
 import PhoneCard from '@/components/phone-card.vue'
 import newPhone from '@/components/new-phone.vue'
+import footerCard from '@/components/footer-card.vue'
 import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'Home',
   components: {
     PhoneCard,
-    newPhone
+    newPhone,
+    footerCard
   },
   computed: {
     ...mapState({
@@ -34,6 +36,7 @@ section(v-if="!isNew" class="box")
   phone-card(v-for="phone in phones",:phone="phone")
 section(v-else)
   new-phone()
+footer-card()
 </template>
 
 <style lang="sass">
@@ -51,7 +54,7 @@ $primary: #ffffff
   transition: all .1s ease
   border: none
   outline: none
-  background: linear-gradient(-90deg, #fff1cc, #88fcf0)
+  background: linear-gradient(-90deg, #fff1cc, #f7a099)
   border-radius: 25px
   &:before
     content: ""
@@ -85,7 +88,7 @@ $primary: #ffffff
     transition: all .3s ease
   &:hover
     &:before
-      width: 110%
+      width: 100%
       background: rgba(#fff1cc,1)
     svg
       transform: translateX(0)
@@ -93,7 +96,6 @@ $primary: #ffffff
     transform: scale(.94)
 
 .downloadButton
-  font-family: 'Bungee', cursive
   font-size: 0.7rem
   position: relative
   text-transform: uppercase
@@ -101,10 +103,10 @@ $primary: #ffffff
   letter-spacing: 1px
   cursor: pointer
   background: $color
-  border: 2px solid darken(#f5c064, 15%)
+  border: 2px solid darken(black, 15%)
   padding: 10px 20px
   border-radius: 45px
-  color: #f5c064
+  color: #fff1cc
   overflow: hidden
   box-shadow: 0 2px 4px darkgray
   transition: all 0.2s ease-in

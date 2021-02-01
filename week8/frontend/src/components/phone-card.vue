@@ -56,23 +56,22 @@ article.card
     vertical-align: top;
     text-align: center;
     padding: 25px;
-    border: 2px solid rgb(227, 238, 226);
     border-radius: 5px;
-    background: #f7f0dd;
+    background: #edf7fa;
     margin: 20px;
     height: fit-content;
     width: fit-content;
     box-shadow: 1px 1px;
 }
 .card:hover {
-  background: rgb(238, 232, 196);
+    background: #e3f2f7;
 }
 .rm-btn {
   border: none;
   outline: none;
   padding: 5px;
   float: right;
-  background: #f7f0dd;
+  background: #edf7fa;
 }
 .rm-btn:hover {
    background-color: rgb(212, 54, 54);
@@ -91,7 +90,7 @@ article.card
   font-size: 18px;
 }
 .appname { 
-  color: rgb(18, 115, 172);
+  color: rgb(18, 172, 77);
   font-size: 12px;
 }
 .current {
@@ -101,19 +100,15 @@ article.card
 .here {
   border: none;
   outline: none;
-  background: rgb(238, 232, 196);
+  background:#edf7fa;
 }
 .p-default {
-  border: 1px solid rgb(227, 238, 226);
   border-radius: 5px;
   margin:10px;
   background: rgb(247, 247, 247);
 }
 .p-default:hover {
   background-color: white ;
-}
-.downloadButton {
-  font-family:sans-serif !important;
 }
 .img {
   border-radius: 5px;
