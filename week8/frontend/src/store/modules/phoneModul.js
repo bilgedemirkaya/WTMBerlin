@@ -5,6 +5,7 @@ const state = {
       singlePhone: [],
       phoneChoice: "",
       currentapps: [],
+      downloadStatus: ''
 }
     
 const mutations= { 
@@ -28,9 +29,10 @@ const mutations= {
         state.phoneChoice = phoneChoice
       },
 
-      SET_CURRENTAPPS(state, currentapps) {
-        state.currentapps = currentapps
+      SET_DOWNLOADSTATUS(state, status) {
+        state.downloadStatus = status
       },
+
 }
 
 const actions = { 
@@ -42,10 +44,7 @@ const actions = {
       async addPhone({ commit }, phone) {
         const response = await axios.post(`${process.env.VUE_APP_API_URL}/phone`, phone)
         commit("SET_NEWPHONE", response.data)
-        
-        setTimeout(() => {
-          window.location = "/"
-        }, 3000)
+        window.location = "/"
       },
 
       async removePhone({ commit }, id) {
@@ -66,13 +65,15 @@ const actions = {
     },
 
      async choosePhone({ commit }, id) {
+
         // get current apps
         const personApps = await axios.get(`${process.env.VUE_APP_API_URL}/phone/${id}`)
-        commit("SET_CURRENTAPPS", personApps.data.apps)
-  
+        
         // save phone choice
         const phoneChoice = personApps.data._id
         commit("SET_PHONE", phoneChoice)
+      
+
       },
 
      async downloadApp({ commit }, appId) {
@@ -80,8 +81,10 @@ const actions = {
         const ids = []
   
         if (phoneId == "" || appId == null ) {
-          alert("You should both specify your phone and the app")
-          window.location = "/"
+          commit("SET_DOWNLOADSTATUS", 'error')
+          setTimeout(() => {
+            window.location = "/"
+          }, 2000)
           return
         }
   
@@ -91,15 +94,19 @@ const actions = {
         })
   
         if (ids.includes(appId)) {
-          alert("You already downloaded the app")
-          window.location = "/"
+          commit("SET_DOWNLOADSTATUS", 'info')
+          setTimeout(() => {
+            window.location = "/"
+          }, 2000)
           return
         }
   
         const choisenapp = { app: appId }
         await axios.post(`${process.env.VUE_APP_API_URL}/phone/${phoneId}/download`, choisenapp)
-        alert("App downloaded, you can check if it is there in phones")
-        window.location = "/"
+        commit("SET_DOWNLOADSTATUS", 'success')
+        setTimeout(() => {
+          window.location = "/"
+        }, 2000)
       },
 }
 

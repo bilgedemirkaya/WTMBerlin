@@ -1,11 +1,11 @@
 <script>
-import phoneCard from '@/components/phone-card.vue'
+import itemCard from '@/components/item-card.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Phone',
   components: {
-    phoneCard
+    itemCard
   },
   computed: {
     ...mapState({
@@ -24,5 +24,5 @@ export default {
 <template lang='pug'>
 main
   section
-    phone-card(:phone='phone')
+     item-card(type="phone", :item='phone')
 </template>

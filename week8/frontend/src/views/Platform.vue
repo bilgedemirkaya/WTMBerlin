@@ -1,18 +1,18 @@
 <script> 
-import PlatformCard from '@/components/platform-card.vue'
+import ItemCard from '@/components/item-card.vue'
 import {mapState, mapActions} from 'vuex'
-import newPlatform from '@/components/new-platform.vue'
+import addNew from '@/components/add-new.vue'
 
 export default {
   name: 'Platform',
   components: {
-    PlatformCard,
-    newPlatform,
+    ItemCard,
+    addNew,
   },
   computed: {
     ...mapState({
-     platforms: (state) => state.platformModul.platforms,
-     isNew: (state) => state.isNew
+      apps: (state) => state.platformModul.platforms,
+      status: (state) => state.phoneModul.downloadStatus,
     }) 
   },
   methods: {
@@ -23,15 +23,19 @@ export default {
   }
 }
 </script>
-
 <template lang="pug">
 div(style="margin-left:30px;")
+  div(v-if="status == 'success'" class="notification is-primary")
+    p Successfully downloaded!
+  div(v-if="status == 'info'" class="notification is-info")
+    p You already downloaded that app.
+  div(v-if="status == 'error'" class="notification is-danger")
+    p You should both specify the phone and the app.
   h1 Welcome to the website where you can download new apps to your phone!
-  h3 Please choose your social platform or  
-    button(class="button" @click="addNew")
-      span Add a new social platform
-section(v-if="!isNew" class="box") 
-  platform-card(v-for="platform in platforms",:platform="platform")
-section(v-else)
-  new-platform()
+  section(v-if="!apps.length") 
+    h1 There is no app added yet.
+  add-new(itemToAdd="app")
+  section(class="section") 
+    item-card(type="app", v-for="app in apps",:item="app")
+
 </template>

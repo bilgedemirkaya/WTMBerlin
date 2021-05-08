@@ -1,11 +1,22 @@
-<template>
+<script>
+import FooterCard from './components/footer-card.vue'
+export default {
+  name: 'App',
+  components: {
+    FooterCard
+  }
+}
+</script>
 
+<template>
+<div>
   <div id="nav">
     <router-link to="/">Phones</router-link> |
     <router-link to="/apps">Apps</router-link>
   </div>
   <router-view/>
-
+<footer-card id="footer" />
+</div>
 </template>
 
 <style>
@@ -16,6 +27,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: grid;
+  height: 100%;
 }
 #nav {
   padding: 30px;
