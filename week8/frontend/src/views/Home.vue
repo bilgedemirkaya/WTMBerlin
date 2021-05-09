@@ -1,10 +1,10 @@
 <script>
-import ItemCard from '@/components/item-card.vue'
-import addNew from '@/components/add-new.vue'
-import {mapState, mapActions} from 'vuex'
+import ItemCard from "@/components/item-card.vue"
+import addNew from "@/components/add-new.vue"
+import { mapState, mapActions } from "vuex"
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     ItemCard,
     addNew,
@@ -15,7 +15,7 @@ export default {
     }) 
   },
   methods: {
-    ...mapActions(['fetchPhones','addNew'])
+    ...mapActions([ "fetchPhones", "addNew" ])
   },
   created() {
     this.fetchPhones()

@@ -1,22 +1,22 @@
 <script> 
-import ItemCard from '@/components/item-card.vue'
-import {mapState, mapActions} from 'vuex'
-import addNew from '@/components/add-new.vue'
+import ItemCard from "@/components/item-card.vue"
+import { mapState, mapActions } from "vuex"
+import addNew from "@/components/add-new.vue"
 
 export default {
-  name: 'Platform',
+  name: "App",
   components: {
     ItemCard,
     addNew,
   },
   computed: {
     ...mapState({
-      apps: (state) => state.platformModul.platforms,
+      apps: (state) => state.appModul.apps,
       status: (state) => state.phoneModul.downloadStatus,
     }) 
   },
   methods: {
-    ...mapActions(['fetchApps','addNew'])
+    ...mapActions([ "fetchApps", "addNew" ])
   },
   created() {
     this.fetchApps()

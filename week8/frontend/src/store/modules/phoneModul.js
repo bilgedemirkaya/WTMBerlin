@@ -5,10 +5,10 @@ const state = {
       singlePhone: [],
       phoneChoice: "",
       currentapps: [],
-      downloadStatus: ''
+      downloadStatus: "",
 }
     
-const mutations= { 
+const mutations = { 
       SET_PHONES(state, phones) {
         state.phones = phones
       },
@@ -32,7 +32,6 @@ const mutations= {
       SET_DOWNLOADSTATUS(state, status) {
         state.downloadStatus = status
       },
-
 }
 
 const actions = { 
@@ -42,9 +41,14 @@ const actions = {
       },
 
       async addPhone({ commit }, phone) {
+        let loading = true
+        commit("SET_LOADING", loading)
         const response = await axios.post(`${process.env.VUE_APP_API_URL}/phone`, phone)
-        commit("SET_NEWPHONE", response.data)
-        window.location = "/"
+        setTimeout(() => {
+          commit("SET_NEWPHONE", response.data)
+          loading = false
+          commit("SET_LOADING", loading)
+        }, 2000)
       },
 
       async removePhone({ commit }, id) {
@@ -72,7 +76,6 @@ const actions = {
         // save phone choice
         const phoneChoice = personApps.data._id
         commit("SET_PHONE", phoneChoice)
-      
 
       },
 
@@ -81,7 +84,7 @@ const actions = {
         const ids = []
   
         if (phoneId == "" || appId == null ) {
-          commit("SET_DOWNLOADSTATUS", 'error')
+          commit("SET_DOWNLOADSTATUS", "error")
           setTimeout(() => {
             window.location = "/"
           }, 2000)
@@ -94,7 +97,7 @@ const actions = {
         })
   
         if (ids.includes(appId)) {
-          commit("SET_DOWNLOADSTATUS", 'info')
+          commit("SET_DOWNLOADSTATUS", "info")
           setTimeout(() => {
             window.location = "/"
           }, 2000)
@@ -103,7 +106,7 @@ const actions = {
   
         const choisenapp = { app: appId }
         await axios.post(`${process.env.VUE_APP_API_URL}/phone/${phoneId}/download`, choisenapp)
-        commit("SET_DOWNLOADSTATUS", 'success')
+        commit("SET_DOWNLOADSTATUS", "success")
         setTimeout(() => {
           window.location = "/"
         }, 2000)

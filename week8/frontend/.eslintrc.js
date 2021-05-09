@@ -51,7 +51,6 @@ module.exports = {
         "no-negated-in-lhs": "error",
         "no-nested-ternary": "error",
         "no-redeclare": "error",
-        "no-shadow": "error",
         "no-undef-init": "error",
         "no-unreachable": "error",
         "no-unsafe-negation": "error",
@@ -65,6 +64,6 @@ module.exports = {
         "prefer-const": "error",
         "space-before-blocks": [ "error", "always" ],
         "space-infix-ops": [ "error", { "int32Hint": false } ],
-        "quotes": ["error", "double"]
+        "quotes": [ "error", "double" ]
     }
 };

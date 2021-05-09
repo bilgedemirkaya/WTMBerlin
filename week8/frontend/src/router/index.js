@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Home from "../views/Home.vue"
-import Phone from "../views/Phone.vue"
+import SingleItem from "../views/SingleItem.vue"
 import Platform from "../views/Platform.vue"
-import NotFound from '../views/NotFound.vue'
+import NotFound from "../views/NotFound.vue"
 const routes = [
   {
     path: "/",
@@ -10,9 +10,9 @@ const routes = [
     component: Home
   },
   {
-    path: "/phones/:id",
+    path: "/:catchAll(.*)/:id",
     name: "phone",
-    component: Phone
+    component: SingleItem
   },
   {
     path: "/apps",
@@ -21,7 +21,7 @@ const routes = [
   },
   { 
     path: "/:catchAll(.*)",
-    name: 'Not Found',
+    name: "Not Found",
     component: NotFound
   }
 ]

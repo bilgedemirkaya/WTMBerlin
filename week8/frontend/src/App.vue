@@ -1,7 +1,7 @@
 <script>
-import FooterCard from './components/footer-card.vue'
+import FooterCard from "./components/footer-card.vue"
 export default {
-  name: 'App',
+  name: "App",
   components: {
     FooterCard
   }

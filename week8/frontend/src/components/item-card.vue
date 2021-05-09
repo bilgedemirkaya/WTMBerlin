@@ -1,20 +1,20 @@
 <script>
-import {mapState, mapActions} from 'vuex'
+import { mapActions } from "vuex"
 
 export default {
-  name: 'ItemCard',
-  props: ['type', 'item'],
+  name: "ItemCard",
+  props: [ "type", "item", "single" ],
   components: {
   },
   data () {
     return {
-      clicked:false
+      clicked: false
     }
   },
   methods: {
-    ...mapActions(['choosePhone','removePhone','rmvPlatform','downloadApp']),
+    ...mapActions([ "choosePhone", "removePhone", "rmvPlatform", "downloadApp" ]),
     removeItem () {
-      this.type === 'phone' ? this.removePhone(this.item._id) : this.rmvPlatform(this.item._id)
+      this.type === "phone" ? this.removePhone(this.item._id) : this.rmvPlatform(this.item._id)
     },
     itemUrl() {
       return `/${this.type}s/${this.item._id}`
@@ -33,12 +33,12 @@ article(class="card" :class="this.type")
     div(v-if="this.type == 'phone'" class="content")
       img(:src='`https://picsum.photos/250/150?random=${item._id}`', alt='phone' class='img')
       div(class="current-apps")
-        div(v-if="item.apps.length")
+        div(v-if="item.apps?.length")
               h6( class="subtitle") Current Apps: 
               p(v-for="app in item.apps" class="tag is-success is-light") {{ app.name }} ✓
         div(v-else)
             p(class="no-app") No apps downloaded yet.
-      button(@click='choosePhone(`${item._id}`); $router.push("/apps")' class="button is-success is-outlined") Select an app for {{item.name}}
+      button(v-if="!this.single" @click='choosePhone(`${item._id}`); $router.push("/apps")' class="button is-success is-outlined") Select an app for {{item.name}}
     div(v-if="this.type == 'app'")
       button(class='button is-success is-outlined' @click='downloadApp(`${item._id}`)') Download
 </template>
@@ -60,6 +60,7 @@ article(class="card" :class="this.type")
 }
 .app {
   height: 150px !important;
+  width: fit-content;
 }
 .no-app {
   padding: 50px 0;

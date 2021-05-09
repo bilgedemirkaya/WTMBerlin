@@ -1,34 +1,32 @@
 <script>
-import { mapActions, mapState} from 'vuex'
+import { mapActions, mapState } from "vuex"
 export default {
     name: "addNew",
-    props: ['itemToAdd'],
+    props: [ "itemToAdd" ],
     data() {
       return {
         item: "",
-        clicked: false,
         isDisable() {
           return this.item.length > 0;
       }
       }
     },
     methods: {
-        ...mapActions(["addPhone","addPlatform"]),
+        ...mapActions([ "addPhone", "addPlatform" ]),
       onSubmit() {
-        let newItem = {
+        const newItem = {
               name: this.item
         }
-        setTimeout(() => {
-          this.itemToAdd === 'phone' ? this.addPhone(newItem) : this.addPlatform(newItem)
-        }, 1000)
-          this.item = ''
+          this.itemToAdd === "phone" ? this.addPhone(newItem) : this.addPlatform(newItem)
+          this.item = ""
         },
         resetForm() {
-          this.item = ''
+          this.item = ""
         }
     },
     computed: {
     ...mapState({ 
+       loading: (state) => state.loading,
     }),
     }
 }
@@ -47,7 +45,7 @@ article(class="card trd" style="height:200px; width:40%")
         button(type="submit" class="button is-link is-outlined btns" @click="clicked = true" :disabled="!isDisable()") Submit
         button(class="button is-danger is-outlined btns" type="button" @click="resetForm()") Cancel      
       
-        p(v-if="clicked")  Thank you for adding a new {{this.itemToAdd}}
+        p(v-if="this.loading") Thank you for adding a new {{this.itemToAdd}}
           progress(class="progress is-small is-primary" max="100") %15
 
 </template>
