@@ -21,7 +21,7 @@ export default {
 .site-footer
 {
   background-color:#edf7fa;
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;

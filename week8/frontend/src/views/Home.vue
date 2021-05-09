@@ -24,9 +24,9 @@ export default {
 </script>
 
 <template lang= "pug">
-div(style="margin-left:30px;")
-  h1 Welcome to the website where you can download new apps to your phone!
-  section(v-if="!phones.length") 
+div(style="margin-left:30px; min-height:81vh;")
+  h1(class="title is-5") Welcome to the website where you can download new apps to your phone!
+  section(v-if="!phones.length" style="margin:50px") 
     h1 There is no phone added yet.
   add-new(itemToAdd="phone")
   section(class="section") 

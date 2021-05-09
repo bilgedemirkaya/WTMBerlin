@@ -22,14 +22,20 @@ export default {
   }
 }
 </script>
-
 <template lang='pug'>
 article(class="card" :class="this.type")
   header(class="card-header")
     router-link(:to='itemUrl()' class='card-header-title') {{ item.name }}
-    button(class='delete is-medium' @click="removeItem()") X
-
-  div(class="card-content")
+    div(v-if="this.type == 'app'" style="margin:5px 0 5px 0")
+        button(class='button is-success is-outlined' @click='downloadApp(`${item._id}`)') 
+          span(class="icon")
+            i(class="fas fa-download")
+    div(style="margin:5px 14px 5px 10px")
+      button(class='button is-danger is-outlined' @click="removeItem()") 
+        span(class="icon")
+            i(class="far fa-trash-alt") 
+          
+  div(class="card-content" v-if="this.type == 'phone'")
     div(v-if="this.type == 'phone'" class="content")
       img(:src='`https://picsum.photos/250/150?random=${item._id}`', alt='phone' class='img')
       div(class="current-apps")
@@ -38,9 +44,8 @@ article(class="card" :class="this.type")
               p(v-for="app in item.apps" class="tag is-success is-light") {{ app.name }} ✓
         div(v-else)
             p(class="no-app") No apps downloaded yet.
-      button(v-if="!this.single" @click='choosePhone(`${item._id}`); $router.push("/apps")' class="button is-success is-outlined") Select an app for {{item.name}}
-    div(v-if="this.type == 'app'")
-      button(class='button is-success is-outlined' @click='downloadApp(`${item._id}`)') Download
+      button(v-if="!this.single" @click='choosePhone(`${item._id}`); $router.push("/apps")' class="button is-success is-outlined") Select an app
+  
 </template>
 
 <style>
@@ -59,8 +64,8 @@ article(class="card" :class="this.type")
   text-overflow: ellipsis;
 }
 .app {
-  height: 150px !important;
-  width: fit-content;
+  height: 50px !important;
+  width: 300px;
 }
 .no-app {
   padding: 50px 0;
@@ -73,23 +78,24 @@ article(class="card" :class="this.type")
 .card-content {
   width:100%;
   height: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .current-apps {
   height: 125px;
 }
 
-.delete {
-top:10px;
-right: 5px;
+.button {
+margin:auto
+}
+.img {
+  border-radius: 3px;
 }
 
 .tag.is-success.is-light {
   display: block;
   width: 50%; 
   margin:auto;
-  margin-top: 2px;
+  padding: 3px 0;
+  margin-top:5px;
 }
 
 </style>

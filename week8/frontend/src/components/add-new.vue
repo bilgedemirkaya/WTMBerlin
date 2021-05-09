@@ -34,7 +34,7 @@ export default {
 
 <template lang="pug">
 
-article(class="card trd" style="height:200px; width:40%")
+article(class="card" style="height:30%; min-height:fit-content; width:40%")
   header(class="card-header")
     p(class="card-header-title") Add a new {{this.itemToAdd}}
 
@@ -43,7 +43,7 @@ article(class="card trd" style="height:200px; width:40%")
       form(@submit.prevent="onSubmit")
         input(type="text" v-model="item" placeholder="Enter name..." class="input")
         button(type="submit" class="button is-link is-outlined btns" @click="clicked = true" :disabled="!isDisable()") Submit
-        button(class="button is-danger is-outlined btns" type="button" @click="resetForm()") Cancel      
+        button(class="button is-danger is-outlined btns" type="button" @click="resetForm()" :disabled="!isDisable()") Cancel      
       
         p(v-if="this.loading") Thank you for adding a new {{this.itemToAdd}}
           progress(class="progress is-small is-primary" max="100") %15
@@ -56,6 +56,7 @@ article(class="card trd" style="height:200px; width:40%")
   width: 50%;
   margin: 5px;
 }
+
 @media screen and (max-width: 600px) {
   .card {
       width:100% !important;

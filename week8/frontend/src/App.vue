@@ -10,12 +10,14 @@ export default {
 
 <template>
 <div>
+  <div style="min-height: 100%">
   <div id="nav">
     <router-link to="/">Phones</router-link> |
     <router-link to="/apps">Apps</router-link>
   </div>
   <router-view/>
 <footer-card id="footer" />
+</div>
 </div>
 </template>
 
